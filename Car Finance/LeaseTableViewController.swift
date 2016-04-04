@@ -325,12 +325,22 @@ class LeaseTableViewController: BaseTableViewController, UITextFieldDelegate, Se
     }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 4
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 17
+        if section == 0{
+            return 4
+        }
+        
+        if section == 1{
+            return 4
+        }
+        
+        if section == 2{
+            return 3
+        }
+        
+        return 4
     }
 }

@@ -272,12 +272,22 @@ class LoanTableViewController: BaseTableViewController, UITextFieldDelegate, Set
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 4
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 14
+        if section == 0{
+            return 3
+        }
+        
+        if section == 1{
+            return 2
+        }
+        
+        if section == 2{
+            return 3
+        }
+        
+        return 4
     }
 }
