@@ -26,7 +26,10 @@ class QuoteController{
     
     // list quotes
     static func listQuotes() -> Results<Quote>{
-        return try! Realm().objects(Quote)
+        var quotesList = try! Realm().objects(Quote)
+        
+        // convert list into array
+        return Array(quotesList)
     }
     
     // delete quote

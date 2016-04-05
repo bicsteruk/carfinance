@@ -103,6 +103,7 @@
 				42BCBD901CB2F4C6003F00AF /* SettingsController.swift */,
 				429EEFFC1CAC0AE500256D7D /* MenuViewController.swift */,
 				429EF0141CAC0EE000256D7D /* HomeViewController.swift */,
+				42BCBD981CB33E22003F00AF /* QuoteController.swift */,
 				42BCBD9C1CB340A0003F00AF /* QuoteTableViewController.swift */,
 				429EEFFE1CAC0AE500256D7D /* Main.storyboard */,
 				4205A7CB1CB1CC7600B07689 /* SettingsTableViewController.swift */,
@@ -117,7 +118,6 @@
 				42BCBD921CB30FCD003F00AF /* Quote.swift */,
 				42BCBD941CB31005003F00AF /* LeaseQuote.swift */,
 				42BCBD961CB3101D003F00AF /* LoanQuote.swift */,
-				42BCBD981CB33E22003F00AF /* QuoteController.swift */,
 			);
 			path = "Car Finance";
 			sourceTree = "<group>";

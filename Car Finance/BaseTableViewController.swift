@@ -28,6 +28,7 @@ class BaseTableViewController: UITableViewController {
         let submitAction = UIAlertAction(title: "Save", style: .Default) {(action: UIAlertAction!) in
             let answer = ac.textFields![0] 
             print("User entered : \(answer.text)")
+            saveQuote()
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .Default) {(action: UIAlertAction!) in
@@ -40,12 +41,15 @@ class BaseTableViewController: UITableViewController {
         presentViewController(ac, animated: true, completion: nil)
     }
     
-    func handleCancel(alertView: UIAlertAction!)
+/*    func handleCancel(alertView: UIAlertAction!)
     {
         print("User click cancel button")
     }
-    
-    
+ */
+    func saveQuote(name : String){
+        
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

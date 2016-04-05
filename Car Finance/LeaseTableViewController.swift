@@ -128,6 +128,45 @@ class LeaseTableViewController: BaseTableViewController, UITextFieldDelegate, Se
         self.addDoneButtonOnKeyboard()
     }
     
+    override func saveQuote(name : String){
+        var quote = LeaseQuote()
+        quote.name = name
+        
+        quote.loanAmount = loanAmount
+        quote.financeCost = financeCost
+        quote.totalCost = totalCost
+        quote.weeklyCost = weeklyCost
+        quote.biWeeklyCost = biWeeklyCost
+        quote.monthlyCost = monthlyCost
+        
+        quote.msrpValue = msrpValue
+        
+        quote.negPrice = negPrice
+        quote.residualVal = residualVal
+        quote.moneyDown = moneyDown
+        quote.aprVal = aprVal
+        quote.numberOfMonths = numberOfMonths
+        quote.incTax = incTax
+
+  /*    residualSlider.minimumValue
+        residualSlider.maximumValue
+        residualSlider.value
+        
+        downPaymentSlider.minimumValue
+        downPaymentSlider.maximumValue
+        downPaymentSlider.value
+        
+        monthStepper.minimumValue
+        monthStepper.maximumValue
+        monthStepper.value
+        
+        aprStepper.minimumValue
+        aprStepper.maximumValue
+        aprStepper.value
+*/
+        
+    }
+    
     func settingsUpdate(details : SettingsDetails){
         print("settingsUpdate called from LeaseTableController")
         
@@ -195,8 +234,6 @@ class LeaseTableViewController: BaseTableViewController, UITextFieldDelegate, Se
         
         calculate()
     }
-    
-    
     
     override func calculate(){
         // read values from the view

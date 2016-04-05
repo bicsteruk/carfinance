@@ -11,6 +11,8 @@ import RealmSwift
 
 class Quote:Object{
     
+    dynamic var name : String = ""
+    
     // common fields
     dynamic var negPrice : Double = 0.0
     dynamic var moneyDown : Int = 0
