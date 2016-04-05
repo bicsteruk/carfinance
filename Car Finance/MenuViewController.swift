@@ -25,13 +25,13 @@ class MenuViewController: BaseViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("MenuView did load")
         tblMenuOptions.tableFooterView = UIView()
         
         // load menu options into array
         arrayMenuOptions.append(["title":"Home", "icon":"Home"] )
         arrayMenuOptions.append(["title":"Lease Calculator", "icon":"Lease"])
         arrayMenuOptions.append(["title":"Finance Calculator", "icon":"Loan"])
+                arrayMenuOptions.append(["title":"Saved Quotes", "icon":"Quote"])
 
         self.addSlideMenuButton()
         
@@ -41,12 +41,10 @@ class MenuViewController: BaseViewController, UITableViewDataSource, UITableView
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        print("MenuView will appear")
         updateArrayMenuOptions()
     }
     
@@ -60,8 +58,6 @@ class MenuViewController: BaseViewController, UITableViewDataSource, UITableView
         if(button == self.btnCloseMenuOverlay){
             index = -1
         }
-        print("onCloseMenuClick option \(index)")
-
         switch(index){
             case 0:
                 self.navigationController?.pushViewController(NavigationViewController.homeViewController, animated: true)
@@ -71,6 +67,9 @@ class MenuViewController: BaseViewController, UITableViewDataSource, UITableView
             break
             case 2:
                 self.navigationController?.pushViewController(NavigationViewController.loanTableViewController, animated: true)
+            break
+            case 3:
+                self.navigationController?.pushViewController(NavigationViewController.quoteTableViewController, animated: true)
             break
             default:
                 return

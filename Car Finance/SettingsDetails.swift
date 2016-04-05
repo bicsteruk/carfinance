@@ -7,21 +7,30 @@
 //
 
 import Foundation
+import RealmSwift
 
-class SettingsDetails{
+class SettingsDetails : Object{
     
-    var downPaymentMin : Int = 0
-    var downPaymentMax : Int = 50000
-    var downPaymentDefault : Int = 0
+    dynamic var downPaymentMin : Int = 0
+    dynamic var downPaymentMax : Int = 25000
+    dynamic var downPaymentDefault : Int = 0
+    dynamic var aprDefault : Double = 1.0
+    dynamic var monthsDefault : Int = 36
+    dynamic var taxRate : Double = 13.1
     
-    var aprDefault : Double = 1.0
-
-    var monthsDefault : Int = 36
-    
-    var taxRate : Double = 13.1
-    
-    init(){
+/*   required init(){
         
+    }
+    
+    convenience required init(){
+        self.init()
+        
+        self.downPaymentMin = 0
+        self.downPaymentMax = 50000
+        self.downPaymentDefault = 0
+        self.aprDefault = 1.0
+        self.monthsDefault = 36
+        self.taxRate = 13.1
     }
     
     convenience init(downPaymentMin : Int, downPaymentMax : Int, downPaymentDefault : Int, aprDefault : Double, monthsDefault : Int, taxRate : Double){
@@ -32,5 +41,5 @@ class SettingsDetails{
         self.aprDefault = aprDefault
         self.monthsDefault = monthsDefault
         self.taxRate = taxRate
-    }
+    }*/
 }

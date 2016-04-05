@@ -31,6 +31,8 @@ class LoanTableViewController: BaseTableViewController, UITextFieldDelegate, Set
     
     @IBOutlet var taxSwitch : UISwitch!
     
+    @IBOutlet var saveButton : UIButton!
+    
     // helper variables
     var currencySymbol = "$"
     
@@ -71,17 +73,19 @@ class LoanTableViewController: BaseTableViewController, UITextFieldDelegate, Set
         monthTextField.keyboardType = UIKeyboardType.NumberPad
         aprTextField.delegate = self
         aprTextField.keyboardType = UIKeyboardType.DecimalPad
-        // add done button to keyboards
+        
+        textFields.append(agreedPriceField)
+        textFields.append(monthTextField)
+        textFields.append(aprTextField)
+        
+        // setup buttons
         self.addDoneButtonOnKeyboard()
+        self.setupSaveButton(saveButton)
         
-        
-
-        
-        settingsUpdate(SettingsDetails())
-
+        settingsUpdate(SettingsController.readSettings())
     }
     
-    func calculate(){
+    override func calculate(){
         updateHelperVars()
         
         print("Calculations go here!")
@@ -134,47 +138,17 @@ class LoanTableViewController: BaseTableViewController, UITextFieldDelegate, Set
         calculate()
     }
     
-    @IBAction func handleTap(sender: UITapGestureRecognizer) {
+/*    @IBAction func handleTap(sender: UITapGestureRecognizer) {
         if sender.state == .Ended {
             print("Tap detected")
             dismissKeyboard()
         }
     }
     
-    
-    func addDoneButtonOnKeyboard()
-    {
-        let doneToolbar: UIToolbar = UIToolbar(frame: CGRectMake(0, 0, 320, 50))
-        doneToolbar.barStyle = UIBarStyle.Default
-        
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
-        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: #selector(LoanTableViewController.dismissKeyboard))
-        
-        let items = NSMutableArray()
-        items.addObject(flexSpace)
-        items.addObject(done)
-        
-        doneToolbar.items = [done]
-        doneToolbar.sizeToFit()
-        
-        agreedPriceField.inputAccessoryView = doneToolbar
-        aprTextField.inputAccessoryView = doneToolbar
-        monthTextField.inputAccessoryView = doneToolbar
-        
-    }
-    
-    func dismissKeyboard()
-    {
-        agreedPriceField.resignFirstResponder()
-        aprTextField.resignFirstResponder()
-        monthTextField.resignFirstResponder()
-        calculate()
-    }
-    
     @IBAction func switchFlipped(mySwitch : UISwitch){
         calculate()
     }
-
+*/
     func textFieldDidBeginEditing(textField: UITextField) {
         if textField == aprTextField{
             aprStepper.enabled = false
@@ -285,9 +259,9 @@ class LoanTableViewController: BaseTableViewController, UITextFieldDelegate, Set
         }
         
         if section == 2{
-            return 3
+            return 4
         }
         
-        return 4
+        return 5
     }
 }

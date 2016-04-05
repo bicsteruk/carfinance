@@ -36,8 +36,13 @@ class LeaseTableViewController: BaseTableViewController, UITextFieldDelegate, Se
     
     @IBOutlet var taxSwitch : UISwitch!
     
+    @IBOutlet var saveButton : UIButton!
+    
+    
     // helper variables
     var currencySymbol = "$"
+    var aprDefault : Double = 0.0
+    var monthsDefault : Int = 0
     
     var msrpValue : Double = 0.0
     var negPrice : Double = 0.0
@@ -80,7 +85,7 @@ class LeaseTableViewController: BaseTableViewController, UITextFieldDelegate, Se
         aprTextField.keyboardType = UIKeyboardType.DecimalPad
         
         // set default values
-        settingsUpdate(SettingsDetails())
+        settingsUpdate(SettingsController.readSettings())
         
         // set residual to be 0
         residualLabel.text = "Residual: \(residualVal)%"
@@ -111,15 +116,16 @@ class LeaseTableViewController: BaseTableViewController, UITextFieldDelegate, Se
         aprStepper.minimumValue = 0
         aprStepper.maximumValue = 1000
         //aprStepper.value = 100.0
-
-        taxSwitch.thumbTintColor = Common.greyColor
-        taxSwitch.onTintColor = Common.blueColor
         
+        textFields.append(msrpField)
+        textFields.append(agreedPriceField)
+        textFields.append(aprTextField)
+        textFields.append(monthTextField)
+        
+        self.setupSaveButton(saveButton)
         
         // add done button to keyboard
         self.addDoneButtonOnKeyboard()
-        
-
     }
     
     func settingsUpdate(details : SettingsDetails){
@@ -148,14 +154,41 @@ class LeaseTableViewController: BaseTableViewController, UITextFieldDelegate, Se
         }
         
         // update label
-         downPaymentLabel.text = "Down Payment: \(currencySymbol)" + String(format: "%.2f", downPaymentSlider.value)
+        downPaymentLabel.text = "Down Payment: \(currencySymbol)" + String(format: "%.2f", downPaymentSlider.value)
+    
+        if aprDefault == 0.0{
+            // update steppers and associated labels
+            Common.updateStepperVal(details.aprDefault * 100, stepper : aprStepper)
+            aprTextField.text = String(format: "%.2f", details.aprDefault)
+            aprDefault = details.aprDefault
+        }else{
+            // we have set settings previously
+            if aprDefault == aprVal{
+                // user hasn't changed APR value
+                if aprDefault != details.aprDefault{
+                    // update steppers and associated labels
+                    Common.updateStepperVal(details.aprDefault * 100, stepper : aprStepper)
+                    aprTextField.text = String(format: "%.2f", details.aprDefault)
+                    aprDefault = details.aprDefault
+                }
+            }
+        }
         
-        // update steppers and associated labels
-        Common.updateStepperVal(details.aprDefault * 100, stepper : aprStepper)
-        aprTextField.text = String(format: "%.2f", details.aprDefault)
-        
-        Common.updateStepperVal(Double(details.monthsDefault), stepper : monthStepper)
-        monthTextField.text = "\(details.monthsDefault)"
+        if monthsDefault == 0{
+            Common.updateStepperVal(Double(details.monthsDefault), stepper : monthStepper)
+            monthTextField.text = "\(details.monthsDefault)"
+            monthsDefault = details.monthsDefault
+        }else{
+            if monthsDefault == numberOfMonths{
+                if monthsDefault != details.monthsDefault{
+                    // update as defaults have changed by user hasn't changed them
+                    Common.updateStepperVal(Double(details.monthsDefault), stepper : monthStepper)
+                    monthTextField.text = "\(details.monthsDefault)"
+                    monthsDefault = details.monthsDefault
+                }
+            }
+        }
+
         
         // update tax rate
         self.taxAmount = details.taxRate
@@ -165,7 +198,7 @@ class LeaseTableViewController: BaseTableViewController, UITextFieldDelegate, Se
     
     
     
-    func calculate(){
+    override func calculate(){
         // read values from the view
         updateHelperVars()
 
@@ -256,49 +289,6 @@ class LeaseTableViewController: BaseTableViewController, UITextFieldDelegate, Se
         calculate()
     }
     
-    @IBAction func handleTap(sender: UITapGestureRecognizer) {
-        if sender.state == .Ended {
-            // dismiss keyboards
-            dismissKeyboard()
-        }
-    }
-    
-    
-    func addDoneButtonOnKeyboard()
-    {
-        let doneToolbar: UIToolbar = UIToolbar(frame: CGRectMake(0, 0, 320, 50))
-        doneToolbar.barStyle = UIBarStyle.Default
-        
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
-        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: #selector(LeaseTableViewController.dismissKeyboard))
-        
-        let items = NSMutableArray()
-        items.addObject(flexSpace)
-        items.addObject(done)
-        
-        doneToolbar.items = [done]
-        doneToolbar.sizeToFit()
-        
-        msrpField.inputAccessoryView = doneToolbar
-        agreedPriceField.inputAccessoryView = doneToolbar
-        aprTextField.inputAccessoryView = doneToolbar
-        monthTextField.inputAccessoryView = doneToolbar
-
-    }
-    
-    func dismissKeyboard()
-    {
-        msrpField.resignFirstResponder()
-        agreedPriceField.resignFirstResponder()
-        aprTextField.resignFirstResponder()
-        monthTextField.resignFirstResponder()
-        calculate()
-    }
-    
-    @IBAction func switchFlipped(mySwitch : UISwitch){
-        calculate()
-    }
-    
     func textFieldDidBeginEditing(textField: UITextField) {
         if textField == aprTextField{
             aprStepper.enabled = false
@@ -307,6 +297,9 @@ class LeaseTableViewController: BaseTableViewController, UITextFieldDelegate, Se
         if textField == monthTextField{
             monthStepper.enabled = false
         }
+        
+        // select the text in the text field to make it simple to delete
+        //textField.selectedTextRange = textField.textRangeFromPosition(textField.beginningOfDocument, toPosition: textField.endOfDocument)
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
@@ -338,9 +331,9 @@ class LeaseTableViewController: BaseTableViewController, UITextFieldDelegate, Se
         }
         
         if section == 2{
-            return 3
+            return 4
         }
         
-        return 4
+        return 5
     }
 }

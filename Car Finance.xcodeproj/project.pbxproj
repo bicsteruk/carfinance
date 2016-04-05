@@ -23,11 +23,16 @@
 		429EF01D1CAC194B00256D7D /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429EF01C1CAC194B00256D7D /* NavigationViewController.swift */; };
 		429EF0311CAC9F8100256D7D /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429EF0301CAC9F8100256D7D /* BaseTableViewController.swift */; };
 		429EF0331CACA1E500256D7D /* LeaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429EF0321CACA1E500256D7D /* LeaseTableViewController.swift */; };
-		55FAFDEF22558151A83B8C02 /* libPods-Car Finance.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AE4F8C108FC959A00AB1DB /* libPods-Car Finance.a */; };
+		42BCBD911CB2F4C6003F00AF /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BCBD901CB2F4C6003F00AF /* SettingsController.swift */; };
+		42BCBD931CB30FCD003F00AF /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BCBD921CB30FCD003F00AF /* Quote.swift */; };
+		42BCBD951CB31005003F00AF /* LeaseQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BCBD941CB31005003F00AF /* LeaseQuote.swift */; };
+		42BCBD971CB3101D003F00AF /* LoanQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BCBD961CB3101D003F00AF /* LoanQuote.swift */; };
+		42BCBD991CB33E22003F00AF /* QuoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BCBD981CB33E22003F00AF /* QuoteController.swift */; };
+		42BCBD9D1CB340A0003F00AF /* QuoteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BCBD9C1CB340A0003F00AF /* QuoteTableViewController.swift */; };
+		B85772484CEA33881BFFFD96 /* Pods_Car_Finance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E0A11F999985493625DC61E /* Pods_Car_Finance.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		22AE4F8C108FC959A00AB1DB /* libPods-Car Finance.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Car Finance.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4205A7BF1CAF622500B07689 /* SettingsProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsProtocol.swift; sourceTree = "<group>"; };
 		4205A7C11CAF624400B07689 /* SettingsDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDetails.swift; sourceTree = "<group>"; };
 		4205A7C51CB1820B00B07689 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
@@ -46,8 +51,15 @@
 		429EF01C1CAC194B00256D7D /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		429EF0301CAC9F8100256D7D /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		429EF0321CACA1E500256D7D /* LeaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaseTableViewController.swift; sourceTree = "<group>"; };
-		A04BEFAEC9D00544D8316F7F /* Pods-Car Finance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Car Finance.release.xcconfig"; path = "Pods/Target Support Files/Pods-Car Finance/Pods-Car Finance.release.xcconfig"; sourceTree = "<group>"; };
-		D55E633DFCD9B0749829EF4E /* Pods-Car Finance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Car Finance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Car Finance/Pods-Car Finance.debug.xcconfig"; sourceTree = "<group>"; };
+		42BCBD901CB2F4C6003F00AF /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		42BCBD921CB30FCD003F00AF /* Quote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
+		42BCBD941CB31005003F00AF /* LeaseQuote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaseQuote.swift; sourceTree = "<group>"; };
+		42BCBD961CB3101D003F00AF /* LoanQuote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoanQuote.swift; sourceTree = "<group>"; };
+		42BCBD981CB33E22003F00AF /* QuoteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteController.swift; sourceTree = "<group>"; };
+		42BCBD9C1CB340A0003F00AF /* QuoteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteTableViewController.swift; sourceTree = "<group>"; };
+		5E0A11F999985493625DC61E /* Pods_Car_Finance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Car_Finance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		94FC1042DD6E4BF93F0DE83F /* Pods-Car Finance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Car Finance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Car Finance/Pods-Car Finance.debug.xcconfig"; sourceTree = "<group>"; };
+		DFDE32AFA44B0F35AEE4636D /* Pods-Car Finance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Car Finance.release.xcconfig"; path = "Pods/Target Support Files/Pods-Car Finance/Pods-Car Finance.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,37 +67,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55FAFDEF22558151A83B8C02 /* libPods-Car Finance.a in Frameworks */,
+				B85772484CEA33881BFFFD96 /* Pods_Car_Finance.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2DAC757DB5661296E4696B72 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				D55E633DFCD9B0749829EF4E /* Pods-Car Finance.debug.xcconfig */,
-				A04BEFAEC9D00544D8316F7F /* Pods-Car Finance.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		2F9B550B924E45FECFF0EF9F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				22AE4F8C108FC959A00AB1DB /* libPods-Car Finance.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		429EEFEE1CAC0AE400256D7D = {
 			isa = PBXGroup;
 			children = (
 				429EEFF91CAC0AE500256D7D /* Car Finance */,
 				429EEFF81CAC0AE400256D7D /* Products */,
-				2DAC757DB5661296E4696B72 /* Pods */,
-				2F9B550B924E45FECFF0EF9F /* Frameworks */,
+				BBC9D2683D9CD40B100AF4DA /* Pods */,
+				B47EBBD2C90F853A45811F41 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,8 +100,10 @@
 				4205A7C51CB1820B00B07689 /* Common.swift */,
 				429EF00C1CAC0B2100256D7D /* BaseViewController.swift */,
 				429EF01C1CAC194B00256D7D /* NavigationViewController.swift */,
+				42BCBD901CB2F4C6003F00AF /* SettingsController.swift */,
 				429EEFFC1CAC0AE500256D7D /* MenuViewController.swift */,
 				429EF0141CAC0EE000256D7D /* HomeViewController.swift */,
+				42BCBD9C1CB340A0003F00AF /* QuoteTableViewController.swift */,
 				429EEFFE1CAC0AE500256D7D /* Main.storyboard */,
 				4205A7CB1CB1CC7600B07689 /* SettingsTableViewController.swift */,
 				429EF0301CAC9F8100256D7D /* BaseTableViewController.swift */,
@@ -117,8 +114,29 @@
 				429EF0011CAC0AE500256D7D /* Assets.xcassets */,
 				429EF0031CAC0AE500256D7D /* LaunchScreen.storyboard */,
 				429EF0061CAC0AE500256D7D /* Info.plist */,
+				42BCBD921CB30FCD003F00AF /* Quote.swift */,
+				42BCBD941CB31005003F00AF /* LeaseQuote.swift */,
+				42BCBD961CB3101D003F00AF /* LoanQuote.swift */,
+				42BCBD981CB33E22003F00AF /* QuoteController.swift */,
 			);
 			path = "Car Finance";
+			sourceTree = "<group>";
+		};
+		B47EBBD2C90F853A45811F41 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5E0A11F999985493625DC61E /* Pods_Car_Finance.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BBC9D2683D9CD40B100AF4DA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				94FC1042DD6E4BF93F0DE83F /* Pods-Car Finance.debug.xcconfig */,
+				DFDE32AFA44B0F35AEE4636D /* Pods-Car Finance.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,12 +146,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 429EF0091CAC0AE500256D7D /* Build configuration list for PBXNativeTarget "Car Finance" */;
 			buildPhases = (
-				F64A79E532D9BDA36BD0F09B /* Check Pods Manifest.lock */,
+				FFB5538CDAF74B94E9BDBBC2 /* Check Pods Manifest.lock */,
 				429EEFF31CAC0AE400256D7D /* Sources */,
 				429EEFF41CAC0AE400256D7D /* Frameworks */,
 				429EEFF51CAC0AE400256D7D /* Resources */,
-				A9D0DB3C568D01A5057446D5 /* Embed Pods Frameworks */,
-				5A4FD360FCD06778FF643C10 /* Copy Pods Resources */,
+				B124162AAB1AFFEC669050ED /* Embed Pods Frameworks */,
+				7C387436A9F526E106C8B63B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -192,7 +210,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5A4FD360FCD06778FF643C10 /* Copy Pods Resources */ = {
+		7C387436A9F526E106C8B63B /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -207,7 +225,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Car Finance/Pods-Car Finance-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A9D0DB3C568D01A5057446D5 /* Embed Pods Frameworks */ = {
+		B124162AAB1AFFEC669050ED /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -222,7 +240,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Car Finance/Pods-Car Finance-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F64A79E532D9BDA36BD0F09B /* Check Pods Manifest.lock */ = {
+		FFB5538CDAF74B94E9BDBBC2 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -245,16 +263,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				4205A7C01CAF622500B07689 /* SettingsProtocol.swift in Sources */,
+				42BCBD911CB2F4C6003F00AF /* SettingsController.swift in Sources */,
+				42BCBD971CB3101D003F00AF /* LoanQuote.swift in Sources */,
 				4205A7CC1CB1CC7600B07689 /* SettingsTableViewController.swift in Sources */,
 				429EF01D1CAC194B00256D7D /* NavigationViewController.swift in Sources */,
+				42BCBD991CB33E22003F00AF /* QuoteController.swift in Sources */,
 				429EEFFD1CAC0AE500256D7D /* MenuViewController.swift in Sources */,
 				429EF0331CACA1E500256D7D /* LeaseTableViewController.swift in Sources */,
+				42BCBD951CB31005003F00AF /* LeaseQuote.swift in Sources */,
 				4205A7C61CB1820B00B07689 /* Common.swift in Sources */,
 				429EEFFB1CAC0AE500256D7D /* AppDelegate.swift in Sources */,
 				429EF00D1CAC0B2100256D7D /* BaseViewController.swift in Sources */,
 				4205A7C21CAF624400B07689 /* SettingsDetails.swift in Sources */,
 				429EF0311CAC9F8100256D7D /* BaseTableViewController.swift in Sources */,
 				4205A7C81CB1902000B07689 /* LoanTableViewController.swift in Sources */,
+				42BCBD931CB30FCD003F00AF /* Quote.swift in Sources */,
+				42BCBD9D1CB340A0003F00AF /* QuoteTableViewController.swift in Sources */,
 				429EF0151CAC0EE000256D7D /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,7 +390,7 @@
 		};
 		429EF00A1CAC0AE500256D7D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D55E633DFCD9B0749829EF4E /* Pods-Car Finance.debug.xcconfig */;
+			baseConfigurationReference = 94FC1042DD6E4BF93F0DE83F /* Pods-Car Finance.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Car Finance/Info.plist";
@@ -378,7 +402,7 @@
 		};
 		429EF00B1CAC0AE500256D7D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A04BEFAEC9D00544D8316F7F /* Pods-Car Finance.release.xcconfig */;
+			baseConfigurationReference = DFDE32AFA44B0F35AEE4636D /* Pods-Car Finance.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Car Finance/Info.plist";

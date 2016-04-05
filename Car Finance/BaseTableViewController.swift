@@ -10,15 +10,59 @@ import UIKit
 
 class BaseTableViewController: UITableViewController {
 
+    var textFields : [UITextField] = []
+    
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addSlideMenuButton()
-
     }
-
+    
+    @IBAction func savePressed(saveButton : UIButton){
+        print("Save pressed!")
+        
+        let ac = UIAlertController(title: "Please enter a name for the quote:", message: nil, preferredStyle: .Alert)
+        ac.addTextFieldWithConfigurationHandler(nil)
+        
+        let submitAction = UIAlertAction(title: "Save", style: .Default) {(action: UIAlertAction!) in
+            let answer = ac.textFields![0] 
+            print("User entered : \(answer.text)")
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Default) {(action: UIAlertAction!) in
+            print("Cancel pressed")
+        }
+        
+        ac.addAction(submitAction)
+        ac.addAction(cancelAction)
+        ac.view.setNeedsLayout()
+        presentViewController(ac, animated: true, completion: nil)
+    }
+    
+    func handleCancel(alertView: UIAlertAction!)
+    {
+        print("User click cancel button")
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setupSaveButton(saveButton : UIButton){
+        saveButton.backgroundColor = Common.blueColor
+        saveButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        saveButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Highlighted)
+        //saveButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Disabled)
+        saveButton.layer.cornerRadius = 5
+        saveButton.layer.borderWidth = 1
+        saveButton.layer.borderColor = UIColor.blackColor().CGColor
+    }
+    
+    func calculate(){
+        
     }
 
     func addSlideMenuButton(){
@@ -38,8 +82,6 @@ class BaseTableViewController: UITableViewController {
     }
     
     func onLeftButtonPressed(sender : UIButton){
-        print("Left pressed")
-        
         // retrieve reference to current top view controller
         let currentViewController : UIViewController = self.navigationController!.topViewController!
         
@@ -57,7 +99,6 @@ class BaseTableViewController: UITableViewController {
     
     
     func onRightButtonPressed(sender : UIButton){
-        print("Right pressed")
         self.navigationController?.pushViewController(NavigationViewController.settingsTableViewController, animated: true)
     }
 
@@ -84,6 +125,46 @@ class BaseTableViewController: UITableViewController {
             return true
         }
     }
+    
+    func addDoneButtonOnKeyboard()
+    {
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRectMake(0, 0, 320, 50))
+        doneToolbar.barStyle = UIBarStyle.Default
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: #selector(BaseTableViewController.dismissKeyboard))
+        
+        let items = NSMutableArray()
+        items.addObject(flexSpace)
+        items.addObject(done)
+        
+        doneToolbar.items = [done]
+        doneToolbar.sizeToFit()
+        
+        for textField in textFields{
+            textField.inputAccessoryView = doneToolbar
+        }
+    }
+    
+    func dismissKeyboard()
+    {
+        for textField in textFields{
+            textField.resignFirstResponder()
+        }
+
+        calculate()
+    }
+    
+    @IBAction func handleTap(sender: UITapGestureRecognizer) {
+        if sender.state == .Ended {
+            // dismiss keyboards
+            dismissKeyboard()
+        }
+    }
+    
+    @IBAction func switchFlipped(mySwitch : UISwitch){
+        calculate()
+    }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -94,60 +175,4 @@ class BaseTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return 0
     }
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

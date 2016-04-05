@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import RealmSwift
 
-class SettingsTableViewController: BaseTableViewController {
+class SettingsTableViewController: BaseTableViewController, UITextFieldDelegate {
 
     @IBOutlet var saveButton : UIButton!
     
@@ -37,12 +38,58 @@ class SettingsTableViewController: BaseTableViewController {
         let cancelBarItem = UIBarButtonItem(customView: cancelButton)
         self.navigationItem.leftBarButtonItem = cancelBarItem;
         
+        taxRate.delegate = self
+        taxRate.keyboardType = UIKeyboardType.DecimalPad
+        monthTextField.delegate = self
+        monthTextField.keyboardType = UIKeyboardType.NumberPad
+        aprTextField.delegate = self
+        aprTextField.keyboardType = UIKeyboardType.DecimalPad
+        
+        downPaymentMin.delegate = self
+        downPaymentMin.keyboardType = UIKeyboardType.NumberPad
+        downPaymentMax.delegate = self
+        downPaymentMax.keyboardType = UIKeyboardType.NumberPad
+        downPaymentDefault.delegate = self
+        downPaymentDefault.keyboardType = UIKeyboardType.NumberPad
+        
+        textFields.append(taxRate)
+        textFields.append(aprTextField)
+        textFields.append(monthTextField)
+        textFields.append(downPaymentMax)
+        textFields.append(downPaymentDefault)
+        
+        // add done button
+        self.addDoneButtonOnKeyboard()
+        
+        // read stored settings
+        outputSettings(SettingsController.readSettings())
     }
  
+    func outputSettings(settings : SettingsDetails){
+        taxRate.text = String(format: "%.1f", settings.taxRate)
+        monthTextField.text = "\(settings.monthsDefault)"
+        aprTextField.text = String(format: "%.2f", settings.aprDefault)
+        downPaymentDefault.text = "\(settings.downPaymentDefault)"
+        downPaymentMin.text = "\(settings.downPaymentMin)"
+        downPaymentMax.text = "\(settings.downPaymentMax)"
+    }
+    
+    func readSettings() -> SettingsDetails{
+        let settings = SettingsDetails()
+        settings.taxRate = Double(Common.retrieveTextFieldValue(taxRate))!
+        settings.monthsDefault = Int(Common.retrieveTextFieldValue(monthTextField))!
+        settings.aprDefault = Double(Common.retrieveTextFieldValue(aprTextField))!
+        settings.downPaymentDefault = Int(Common.retrieveTextFieldValue(downPaymentDefault))!
+        settings.downPaymentMin = Int(Common.retrieveTextFieldValue(downPaymentMin))!
+        settings.downPaymentMax = Int(Common.retrieveTextFieldValue(downPaymentMax))!
+        return settings
+    }
+    
     @IBAction func saveSettings(){
         // notify all views of a settings update
         let navigationController = self.navigationController as! NavigationViewController
-        let settings = SettingsDetails()
+        let settings = readSettings()
+        SettingsController.saveSettings(settings)
         navigationController.notifySettingsUpdate(settings)
         // close the settings window
         navigationController.popViewControllerAnimated(true)
@@ -77,60 +124,4 @@ class SettingsTableViewController: BaseTableViewController {
         
         return 0
     }
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

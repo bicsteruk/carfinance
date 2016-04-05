@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class NavigationViewController: UINavigationController {
     
@@ -15,7 +16,7 @@ class NavigationViewController: UINavigationController {
     static var leaseTableViewController : UITableViewController = UITableViewController()
     static var loanTableViewController : UITableViewController = UITableViewController()
     static var settingsTableViewController : UITableViewController = UITableViewController()
-
+    static var quoteTableViewController : UITableViewController = UITableViewController()
     
     var viewArray : [SettingsObserver] = []
     
@@ -29,7 +30,6 @@ class NavigationViewController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("NavigationViewController.viewDidLoad")
         // set font and test of navigation controller titles
         self.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.boldSystemFontOfSize(18), NSForegroundColorAttributeName: UIColor.whiteColor()]
         
@@ -38,11 +38,11 @@ class NavigationViewController: UINavigationController {
         self.dynamicType.leaseTableViewController = self.storyboard?.instantiateViewControllerWithIdentifier("LeaseTableView") as! LeaseTableViewController
         self.dynamicType.loanTableViewController = self.storyboard?.instantiateViewControllerWithIdentifier("LoanTableView") as! LoanTableViewController
         self.dynamicType.settingsTableViewController = self.storyboard?.instantiateViewControllerWithIdentifier("SettingsTableView") as! SettingsTableViewController
+        self.dynamicType.quoteTableViewController = self.storyboard?.instantiateViewControllerWithIdentifier("QuoteTableView") as! QuoteTableViewController
         
         // add views to observer array
         viewArray.append(self.dynamicType.leaseTableViewController as! LeaseTableViewController)
         viewArray.append(self.dynamicType.loanTableViewController as! LoanTableViewController)
-        
         
         // push the home view controller on top of the default menu
         self.pushViewController(self.dynamicType.homeViewController, animated: false)
