@@ -8,9 +8,11 @@
 
 import UIKit
 
-class QuoteTableViewController: UITableViewController, UITableViewDataSource {
+class QuoteTableViewController: UITableViewController {
 
     var quotes : [Quote] = []
+    
+    @IBOutlet var tblMenuOptions : UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +34,7 @@ class QuoteTableViewController: UITableViewController, UITableViewDataSource {
         tblMenuOptions.reloadData()
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cellMenu")!
         
         cell.selectionStyle = UITableViewCellSelectionStyle.None
@@ -43,10 +45,10 @@ class QuoteTableViewController: UITableViewController, UITableViewDataSource {
         let lblTitle : UILabel = cell.contentView.viewWithTag(101) as! UILabel
         let imgIcon : UIImageView = cell.contentView.viewWithTag(100) as! UIImageView
         
-        var quote = quotes[indexPath.row]
+        let quote = quotes[indexPath.row]
         
         //imgIcon.image = UIImage(named: arrayMenuOptions[indexPath.row]["icon"]!)
-        imgIcon.image = UIImage("Lease")
+        imgIcon.image = UIImage(named: "Lease")
         lblTitle.text = quote.name
         
         return cell

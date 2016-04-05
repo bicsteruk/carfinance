@@ -25,8 +25,8 @@ class QuoteController{
     }
     
     // list quotes
-    static func listQuotes() -> Results<Quote>{
-        var quotesList = try! Realm().objects(Quote)
+    static func listQuotes() -> [Quote]{
+        let quotesList = try! Realm().objects(Quote)
         
         // convert list into array
         return Array(quotesList)
