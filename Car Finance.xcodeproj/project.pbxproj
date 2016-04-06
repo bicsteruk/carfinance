@@ -25,10 +25,9 @@
 		429EF0331CACA1E500256D7D /* LeaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429EF0321CACA1E500256D7D /* LeaseTableViewController.swift */; };
 		42BCBD911CB2F4C6003F00AF /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BCBD901CB2F4C6003F00AF /* SettingsController.swift */; };
 		42BCBD931CB30FCD003F00AF /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BCBD921CB30FCD003F00AF /* Quote.swift */; };
-		42BCBD951CB31005003F00AF /* LeaseQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BCBD941CB31005003F00AF /* LeaseQuote.swift */; };
-		42BCBD971CB3101D003F00AF /* LoanQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BCBD961CB3101D003F00AF /* LoanQuote.swift */; };
 		42BCBD991CB33E22003F00AF /* QuoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BCBD981CB33E22003F00AF /* QuoteController.swift */; };
 		42BCBD9D1CB340A0003F00AF /* QuoteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BCBD9C1CB340A0003F00AF /* QuoteTableViewController.swift */; };
+		42BCBD9F1CB458C0003F00AF /* ViewLeaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BCBD9E1CB458C0003F00AF /* ViewLeaseTableViewController.swift */; };
 		B85772484CEA33881BFFFD96 /* Pods_Car_Finance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E0A11F999985493625DC61E /* Pods_Car_Finance.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,10 +52,9 @@
 		429EF0321CACA1E500256D7D /* LeaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaseTableViewController.swift; sourceTree = "<group>"; };
 		42BCBD901CB2F4C6003F00AF /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		42BCBD921CB30FCD003F00AF /* Quote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
-		42BCBD941CB31005003F00AF /* LeaseQuote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaseQuote.swift; sourceTree = "<group>"; };
-		42BCBD961CB3101D003F00AF /* LoanQuote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoanQuote.swift; sourceTree = "<group>"; };
 		42BCBD981CB33E22003F00AF /* QuoteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteController.swift; sourceTree = "<group>"; };
 		42BCBD9C1CB340A0003F00AF /* QuoteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteTableViewController.swift; sourceTree = "<group>"; };
+		42BCBD9E1CB458C0003F00AF /* ViewLeaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewLeaseTableViewController.swift; sourceTree = "<group>"; };
 		5E0A11F999985493625DC61E /* Pods_Car_Finance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Car_Finance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94FC1042DD6E4BF93F0DE83F /* Pods-Car Finance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Car Finance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Car Finance/Pods-Car Finance.debug.xcconfig"; sourceTree = "<group>"; };
 		DFDE32AFA44B0F35AEE4636D /* Pods-Car Finance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Car Finance.release.xcconfig"; path = "Pods/Target Support Files/Pods-Car Finance/Pods-Car Finance.release.xcconfig"; sourceTree = "<group>"; };
@@ -106,6 +104,7 @@
 				42BCBD981CB33E22003F00AF /* QuoteController.swift */,
 				42BCBD9C1CB340A0003F00AF /* QuoteTableViewController.swift */,
 				429EEFFE1CAC0AE500256D7D /* Main.storyboard */,
+				42BCBD9E1CB458C0003F00AF /* ViewLeaseTableViewController.swift */,
 				4205A7CB1CB1CC7600B07689 /* SettingsTableViewController.swift */,
 				429EF0301CAC9F8100256D7D /* BaseTableViewController.swift */,
 				429EF0321CACA1E500256D7D /* LeaseTableViewController.swift */,
@@ -116,8 +115,6 @@
 				429EF0031CAC0AE500256D7D /* LaunchScreen.storyboard */,
 				429EF0061CAC0AE500256D7D /* Info.plist */,
 				42BCBD921CB30FCD003F00AF /* Quote.swift */,
-				42BCBD941CB31005003F00AF /* LeaseQuote.swift */,
-				42BCBD961CB3101D003F00AF /* LoanQuote.swift */,
 			);
 			path = "Car Finance";
 			sourceTree = "<group>";
@@ -263,14 +260,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4205A7C01CAF622500B07689 /* SettingsProtocol.swift in Sources */,
+				42BCBD9F1CB458C0003F00AF /* ViewLeaseTableViewController.swift in Sources */,
 				42BCBD911CB2F4C6003F00AF /* SettingsController.swift in Sources */,
-				42BCBD971CB3101D003F00AF /* LoanQuote.swift in Sources */,
 				4205A7CC1CB1CC7600B07689 /* SettingsTableViewController.swift in Sources */,
 				429EF01D1CAC194B00256D7D /* NavigationViewController.swift in Sources */,
 				42BCBD991CB33E22003F00AF /* QuoteController.swift in Sources */,
 				429EEFFD1CAC0AE500256D7D /* MenuViewController.swift in Sources */,
 				429EF0331CACA1E500256D7D /* LeaseTableViewController.swift in Sources */,
-				42BCBD951CB31005003F00AF /* LeaseQuote.swift in Sources */,
 				4205A7C61CB1820B00B07689 /* Common.swift in Sources */,
 				429EEFFB1CAC0AE500256D7D /* AppDelegate.swift in Sources */,
 				429EF00D1CAC0B2100256D7D /* BaseViewController.swift in Sources */,

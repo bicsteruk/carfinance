@@ -129,7 +129,8 @@ class LeaseTableViewController: BaseTableViewController, UITextFieldDelegate, Se
     }
     
     override func saveQuote(name : String){
-        var quote = LeaseQuote()
+        let quote = Quote()
+        quote.type = Common.LEASE
         quote.name = name
         
         quote.loanAmount = loanAmount
@@ -139,32 +140,34 @@ class LeaseTableViewController: BaseTableViewController, UITextFieldDelegate, Se
         quote.biWeeklyCost = biWeeklyCost
         quote.monthlyCost = monthlyCost
         
-        quote.msrpValue = msrpValue
-        
         quote.negPrice = negPrice
-        quote.residualVal = residualVal
         quote.moneyDown = moneyDown
         quote.aprVal = aprVal
         quote.numberOfMonths = numberOfMonths
         quote.incTax = incTax
-
-  /*    residualSlider.minimumValue
-        residualSlider.maximumValue
-        residualSlider.value
         
-        downPaymentSlider.minimumValue
-        downPaymentSlider.maximumValue
-        downPaymentSlider.value
+        quote.downPaymentSliderMinimumValue = downPaymentSlider.minimumValue
+        quote.downPaymentSliderMaximumValue = downPaymentSlider.maximumValue
+        quote.downPaymentSliderValue = downPaymentSlider.value
         
-        monthStepper.minimumValue
-        monthStepper.maximumValue
-        monthStepper.value
+        quote.monthStepperMinimumValue = monthStepper.minimumValue
+        quote.monthStepperMaximumValue = monthStepper.maximumValue
+        quote.monthStepperValue = monthStepper.value
         
-        aprStepper.minimumValue
-        aprStepper.maximumValue
-        aprStepper.value
-*/
+        quote.aprStepperMinimumValue = aprStepper.minimumValue
+        quote.aprStepperMaximumValue = aprStepper.maximumValue
+        quote.aprStepperValue = aprStepper.value
         
+        // lease specific items
+        quote.msrpValue = msrpValue
+        quote.residualVal = residualVal
+        
+        quote.residualSliderMinimumValue = residualSlider.minimumValue
+        quote.residualSliderMaximumValue = residualSlider.maximumValue
+        quote.residualSliderValue = residualSlider.value
+        
+        // save the quote
+        QuoteController.addQuote(quote)
     }
     
     func settingsUpdate(details : SettingsDetails){

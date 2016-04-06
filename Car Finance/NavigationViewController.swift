@@ -47,6 +47,8 @@ class NavigationViewController: UINavigationController {
         // push the home view controller on top of the default menu
         self.pushViewController(self.dynamicType.homeViewController, animated: false)
     }
+    
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

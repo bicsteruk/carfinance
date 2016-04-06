@@ -11,8 +11,30 @@ import RealmSwift
 
 class SettingsController{
     
+
+    static let config = Realm.Configuration(
+        // Set the new schema version. This must be greater than the previously used
+        // version (if you've never set a schema version before, the version is 0).
+        schemaVersion: 0,
+            
+        // Set the block which will be called automatically when opening a Realm with
+        // a schema version lower than the one set above
+        migrationBlock: { migration, oldSchemaVersion in
+        // We haven’t migrated anything yet, so oldSchemaVersion == 0
+        switch oldSchemaVersion {
+            case 0:
+                break
+            default:
+                // Nothing to do!
+                // Realm will automatically detect new properties and removed properties
+                // And will update the schema on disk automatically
+                //self.zeroToOne(migration)
+                print("Need to migrate Realm schema!")
+            }
+        })
+    
     static func readSettings() -> SettingsDetails{
-        let currentSettings = try! Realm().objects(SettingsDetails).first
+        let currentSettings = try! Realm(configuration: config).objects(SettingsDetails).first
         if let currentSettingsUW = currentSettings{
             // we have current settings
             print("Current tax rate is \(currentSettingsUW.taxRate)%")
@@ -26,7 +48,7 @@ class SettingsController{
     }
     
     static func saveSettings(newSettings : SettingsDetails){
-        let currentSettings = try! Realm().objects(SettingsDetails).first
+        let currentSettings = try! Realm(configuration: config).objects(SettingsDetails).first
         if let currentSettingsUW = currentSettings{
             // we have current settings so modify
             try! Realm().write {

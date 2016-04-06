@@ -10,8 +10,9 @@ import Foundation
 import RealmSwift
 
 class Quote:Object{
-    
+
     dynamic var name : String = ""
+    dynamic var type : String = ""
     
     // common fields
     dynamic var negPrice : Double = 0.0
@@ -35,4 +36,28 @@ class Quote:Object{
     dynamic var aprDefault : Double = 1.0
     dynamic var monthsDefault : Int = 36
     dynamic var taxRate : Double = 13.1
+    
+    // control variables
+    dynamic var downPaymentSliderMinimumValue : Float = 0
+    dynamic var downPaymentSliderMaximumValue : Float = 0
+    dynamic var downPaymentSliderValue : Float = 0
+    
+    dynamic var monthStepperMinimumValue : Double = 0
+    dynamic var monthStepperMaximumValue : Double = 0
+    dynamic var monthStepperValue : Double = 0
+    
+    dynamic var aprStepperMinimumValue : Double = 0
+    dynamic var aprStepperMaximumValue : Double = 0
+    dynamic var aprStepperValue : Double = 0
+    
+    // lease specific fields
+    dynamic var msrpValue : Double = 0.0
+    dynamic var residualVal : Double = 0.0
+    
+    // control values
+    dynamic var residualSliderMinimumValue : Float = 0
+    dynamic var residualSliderMaximumValue : Float = 0
+    dynamic var residualSliderValue : Float = 0
+
+
 }

@@ -14,6 +14,9 @@ class Common{
     static let blueColor = UIColor(red: 22, green: 165, blue: 237)
     static let greyColor = UIColor(red: 121, green: 122, blue: 127)
     
+    static let LOAN = "Loan"
+    static let LEASE = "Lease"
+    
     static func retrieveTextFieldValue(textField : UITextField!) -> String{
         
         if let textFieldUnwrapped = textField{

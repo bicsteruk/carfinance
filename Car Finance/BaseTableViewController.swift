@@ -28,7 +28,10 @@ class BaseTableViewController: UITableViewController {
         let submitAction = UIAlertAction(title: "Save", style: .Default) {(action: UIAlertAction!) in
             let answer = ac.textFields![0] 
             print("User entered : \(answer.text)")
-            saveQuote()
+            
+            if let name = answer.text{
+                self.saveQuote(name)
+            }
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .Default) {(action: UIAlertAction!) in
