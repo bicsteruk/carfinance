@@ -11,6 +11,8 @@ import RealmSwift
 
 class Quote:Object{
 
+    dynamic var quoteID = NSUUID().UUIDString
+    
     dynamic var name : String = ""
     dynamic var type : String = ""
     
@@ -58,6 +60,5 @@ class Quote:Object{
     dynamic var residualSliderMinimumValue : Float = 0
     dynamic var residualSliderMaximumValue : Float = 0
     dynamic var residualSliderValue : Float = 0
-
 
 }

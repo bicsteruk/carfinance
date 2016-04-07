@@ -8,16 +8,12 @@
 
 import UIKit
 
-class ViewLeaseTableViewController: BaseTableViewController {
-
-    @IBOutlet var msrpField : UITextField!
+class ViewLoanTableViewController: BaseTableViewController {
+    
     @IBOutlet var agreedPriceField : UITextField!
     
     @IBOutlet var downPaymentSlider : UISlider!
     @IBOutlet var downPaymentLabel : UILabel!
-    
-    @IBOutlet var residualSlider : UISlider!
-    @IBOutlet var residualLabel : UILabel!
     
     @IBOutlet var aprStepper : UIStepper!
     @IBOutlet var aprTextField : UITextField!
@@ -39,13 +35,10 @@ class ViewLeaseTableViewController: BaseTableViewController {
     var aprDefault : Double = 0.0
     var monthsDefault : Int = 0
     
-    var msrpValue : Double = 0.0
     var negPrice : Double = 0.0
-    var residualVal : Double = 0.0
     var moneyDown : Int = 0
     var aprVal : Double = 0.0
     var numberOfMonths : Int = 0
-    var residualSliderVal : Int = 0
     var incTax : Bool = false
     
     var taxAmount : Double = 13.1
@@ -77,28 +70,14 @@ class ViewLeaseTableViewController: BaseTableViewController {
         self.title = quote.name
         
         // map out from the quote object to the view
-        msrpField.text = String(format: "%.2f", quote.msrpValue)
+        //msrpField.text = String(format: "%.2f", quote.msrpValue)
         agreedPriceField.text = String(format: "%.2f", quote.negPrice)
         
         downPaymentSlider.minimumValue = quote.downPaymentSliderMinimumValue
         downPaymentSlider.maximumValue = quote.downPaymentSliderMaximumValue
         downPaymentSlider.value = quote.downPaymentSliderValue
         downPaymentLabel.text = "Down Payment: \(currencySymbol)\(quote.moneyDown)"
-        
-        residualSlider.minimumValue = quote.residualSliderMinimumValue
-        residualSlider.maximumValue = quote.residualSliderMaximumValue
-        residualSlider.value = quote.residualSliderValue
-                
-        msrpValue = quote.msrpValue
-        
-        let residualVal = Int(roundf(quote.residualSliderValue) * 1)
-        if msrpValue == 0.0{
-            residualLabel.text = "Residual: \(residualVal)%"
-        }else{
-            self.residualVal = (msrpValue/100) * Double(residualVal)
-            residualLabel.text = "Residual: \(residualVal)% (\(currencySymbol)\(Int(self.residualVal)))"
-        }
-        
+
         // don't need to set steppers
         aprTextField.text = String(format: "%.2f", quote.aprVal)
         monthTextField.text = "\(quote.numberOfMonths)"
@@ -117,24 +96,24 @@ class ViewLeaseTableViewController: BaseTableViewController {
         totalCostLabel.text = currencySymbol + String(format: "%.2f", quote.totalCost)
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 4
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
-            return 4
+            return 3
         }
         
         if section == 1{
-            return 4
+            return 2
         }
         
         if section == 2{

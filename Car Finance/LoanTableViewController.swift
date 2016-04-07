@@ -33,9 +33,7 @@ class LoanTableViewController: BaseTableViewController, UITextFieldDelegate, Set
     
     @IBOutlet var saveButton : UIButton!
     
-    // helper variables
-    var currencySymbol = "$"
-    
+    //helper variables
     var negPrice : Double = 0.0
     var moneyDown : Int = 0
     var aprVal : Double = 0.0
@@ -61,10 +59,6 @@ class LoanTableViewController: BaseTableViewController, UITextFieldDelegate, Set
         super.viewDidLoad()
         title = "Finance Calculator"
         didViewLoad = true
-        
-        // read the user's currency symbol
-        let currentLocale = NSLocale.currentLocale()
-        self.currencySymbol = String(currentLocale.objectForKey(NSLocaleCurrencySymbol)!)
         
         // set input field settings
         agreedPriceField.delegate = self
@@ -119,6 +113,41 @@ class LoanTableViewController: BaseTableViewController, UITextFieldDelegate, Set
         monthlyLabel.text = currencySymbol + String(format: "%.2f", monthlyCost)
     }
     
+    override func saveQuote(name : String){
+        let quote = Quote()
+        quote.type = Common.LOAN
+        quote.name = name
+        
+        quote.loanAmount = loanAmount
+        quote.financeCost = financeCost
+        quote.totalCost = totalCost
+        quote.weeklyCost = weeklyCost
+        quote.biWeeklyCost = biWeeklyCost
+        quote.monthlyCost = monthlyCost
+        
+        quote.negPrice = negPrice
+        quote.moneyDown = moneyDown
+        quote.aprVal = aprVal
+        quote.numberOfMonths = numberOfMonths
+        quote.incTax = incTax
+        
+        quote.downPaymentSliderMinimumValue = downPaymentSlider.minimumValue
+        quote.downPaymentSliderMaximumValue = downPaymentSlider.maximumValue
+        quote.downPaymentSliderValue = downPaymentSlider.value
+        
+        quote.monthStepperMinimumValue = monthStepper.minimumValue
+        quote.monthStepperMaximumValue = monthStepper.maximumValue
+        quote.monthStepperValue = monthStepper.value
+        
+        quote.aprStepperMinimumValue = aprStepper.minimumValue
+        quote.aprStepperMaximumValue = aprStepper.maximumValue
+        quote.aprStepperValue = aprStepper.value
+        
+        // save the quote
+        QuoteController.addQuote(quote)
+    }
+
+    
     @IBAction func downPaymentSlide(slider : UISlider){
         let downPaymentValue = Int(round(slider.value / 100) * 100)
         moneyDown = Int(downPaymentValue)
@@ -137,18 +166,7 @@ class LoanTableViewController: BaseTableViewController, UITextFieldDelegate, Set
         monthTextField.text = "\(numberOfMonths)"
         calculate()
     }
-    
-/*    @IBAction func handleTap(sender: UITapGestureRecognizer) {
-        if sender.state == .Ended {
-            print("Tap detected")
-            dismissKeyboard()
-        }
-    }
-    
-    @IBAction func switchFlipped(mySwitch : UISwitch){
-        calculate()
-    }
-*/
+
     func textFieldDidBeginEditing(textField: UITextField) {
         if textField == aprTextField{
             aprStepper.enabled = false
@@ -175,7 +193,6 @@ class LoanTableViewController: BaseTableViewController, UITextFieldDelegate, Set
     }
     
     func settingsUpdate(details : SettingsDetails){
-        print("settingsUpdate called from LoanTableViewController")
         
         if(!didViewLoad){
             return
@@ -230,18 +247,12 @@ class LoanTableViewController: BaseTableViewController, UITextFieldDelegate, Set
                 }
             }
         }
-
-        
-
         
         // update tax rate
         self.taxAmount = details.taxRate
         
         calculate()
     }
-
-    
-    
     
     // MARK: - Table view data source
 

@@ -39,8 +39,6 @@ class BaseViewController: UIViewController {
     }
     
     func onLeftButtonPressed(sender : UIButton){
-        print("Left pressed")
-        
         // retrieve reference to current top view controller
         let currentViewController : UIViewController = self.navigationController!.topViewController!
         
@@ -58,7 +56,6 @@ class BaseViewController: UIViewController {
     
     
     func onRightButtonPressed(sender : UIButton){
-        print("Right pressed")
         self.navigationController?.pushViewController(NavigationViewController.settingsTableViewController, animated: true)
     }
 }

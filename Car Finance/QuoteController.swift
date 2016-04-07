@@ -36,11 +36,12 @@ class QuoteController{
     static func removeQuote(quote : Quote){
         do{
             let realm = try Realm()
-            realm.delete(quote)
+            try realm.write {
+                realm.delete(quote)
+            }
         }
         catch let error{
             print("Error deleting quote: \(error)")
         }
-    }
-    
+    }    
 }

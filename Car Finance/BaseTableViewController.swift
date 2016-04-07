@@ -11,24 +11,22 @@ import UIKit
 class BaseTableViewController: UITableViewController {
 
     var textFields : [UITextField] = []
-    
-
+    var currencySymbol : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addSlideMenuButton()
+        
+        let currentLocale = NSLocale.currentLocale()
+        self.currencySymbol = String(currentLocale.objectForKey(NSLocaleCurrencySymbol)!)
     }
     
-    @IBAction func savePressed(saveButton : UIButton){
-        print("Save pressed!")
-        
+    @IBAction func savePressed(saveButton : UIButton){        
         let ac = UIAlertController(title: "Please enter a name for the quote:", message: nil, preferredStyle: .Alert)
         ac.addTextFieldWithConfigurationHandler(nil)
         
         let submitAction = UIAlertAction(title: "Save", style: .Default) {(action: UIAlertAction!) in
-            let answer = ac.textFields![0] 
-            print("User entered : \(answer.text)")
-            
+            let answer = ac.textFields![0]
             if let name = answer.text{
                 self.saveQuote(name)
             }
@@ -44,11 +42,6 @@ class BaseTableViewController: UITableViewController {
         presentViewController(ac, animated: true, completion: nil)
     }
     
-/*    func handleCancel(alertView: UIAlertAction!)
-    {
-        print("User click cancel button")
-    }
- */
     func saveQuote(name : String){
         
     }
@@ -76,14 +69,14 @@ class BaseTableViewController: UITableViewController {
         let btnShowMenu = UIButton(type: UIButtonType.System)
         btnShowMenu.setImage(UIImage(named: "Hamburger"), forState: UIControlState.Normal)
         btnShowMenu.frame = CGRectMake(0, 0, 30, 30)
-        btnShowMenu.addTarget(self, action: #selector(BaseViewController.onLeftButtonPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        btnShowMenu.addTarget(self, action: #selector(BaseTableViewController.onLeftButtonPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         let customBarItem = UIBarButtonItem(customView: btnShowMenu)
         self.navigationItem.leftBarButtonItem = customBarItem;
         
         let rightMenuButton = UIButton(type: UIButtonType.System)
         rightMenuButton.setImage(UIImage(named: "Settings"), forState: UIControlState.Normal)
         rightMenuButton.frame = CGRectMake(0, 0, 30, 30)
-        rightMenuButton.addTarget(self, action: #selector(BaseViewController.onRightButtonPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        rightMenuButton.addTarget(self, action: #selector(BaseTableViewController.onRightButtonPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         let rightBarItem = UIBarButtonItem(customView: rightMenuButton)
         self.navigationItem.rightBarButtonItem = rightBarItem;
     }

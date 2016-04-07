@@ -17,29 +17,4 @@ class SettingsDetails : Object{
     dynamic var aprDefault : Double = 1.0
     dynamic var monthsDefault : Int = 36
     dynamic var taxRate : Double = 13.1
-    
-/*   required init(){
-        
-    }
-    
-    convenience required init(){
-        self.init()
-        
-        self.downPaymentMin = 0
-        self.downPaymentMax = 50000
-        self.downPaymentDefault = 0
-        self.aprDefault = 1.0
-        self.monthsDefault = 36
-        self.taxRate = 13.1
-    }
-    
-    convenience init(downPaymentMin : Int, downPaymentMax : Int, downPaymentDefault : Int, aprDefault : Double, monthsDefault : Int, taxRate : Double){
-        self.init()
-        self.downPaymentMin = downPaymentMin
-        self.downPaymentMax = downPaymentMax
-        self.downPaymentDefault = downPaymentDefault
-        self.aprDefault = aprDefault
-        self.monthsDefault = monthsDefault
-        self.taxRate = taxRate
-    }*/
 }

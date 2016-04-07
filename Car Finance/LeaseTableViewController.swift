@@ -40,7 +40,6 @@ class LeaseTableViewController: BaseTableViewController, UITextFieldDelegate, Se
     
     
     // helper variables
-    var currencySymbol = "$"
     var aprDefault : Double = 0.0
     var monthsDefault : Int = 0
     
@@ -69,10 +68,6 @@ class LeaseTableViewController: BaseTableViewController, UITextFieldDelegate, Se
         super.viewDidLoad()
         title = "Lease Calculator"
         self.didViewLoad = true
-        
-        // read the user's currency symbol
-        let currentLocale = NSLocale.currentLocale()
-        self.currencySymbol = String(currentLocale.objectForKey(NSLocaleCurrencySymbol)!)
         
         // set input field settings
         msrpField.delegate = self
@@ -171,7 +166,6 @@ class LeaseTableViewController: BaseTableViewController, UITextFieldDelegate, Se
     }
     
     func settingsUpdate(details : SettingsDetails){
-        print("settingsUpdate called from LeaseTableController")
         
         if(!didViewLoad){
             return
@@ -337,9 +331,6 @@ class LeaseTableViewController: BaseTableViewController, UITextFieldDelegate, Se
         if textField == monthTextField{
             monthStepper.enabled = false
         }
-        
-        // select the text in the text field to make it simple to delete
-        //textField.selectedTextRange = textField.textRangeFromPosition(textField.beginningOfDocument, toPosition: textField.endOfDocument)
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
