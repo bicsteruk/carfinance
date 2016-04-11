@@ -17,6 +17,8 @@ class NavigationViewController: UINavigationController {
     static var loanTableViewController : UITableViewController = UITableViewController()
     static var settingsTableViewController : UITableViewController = UITableViewController()
     static var quoteTableViewController : UITableViewController = UITableViewController()
+    static var helpViewController : UIViewController = UIViewController()
+    static var aboutViewController : UIViewController = UIViewController()
     
     var viewArray : [SettingsObserver] = []
     
@@ -39,6 +41,8 @@ class NavigationViewController: UINavigationController {
         self.dynamicType.loanTableViewController = self.storyboard?.instantiateViewControllerWithIdentifier("LoanTableView") as! LoanTableViewController
         self.dynamicType.settingsTableViewController = self.storyboard?.instantiateViewControllerWithIdentifier("SettingsTableView") as! SettingsTableViewController
         self.dynamicType.quoteTableViewController = self.storyboard?.instantiateViewControllerWithIdentifier("QuoteTableView") as! QuoteTableViewController
+        self.dynamicType.helpViewController = self.storyboard?.instantiateViewControllerWithIdentifier("HelpView") as! HelpViewController
+        self.dynamicType.aboutViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AboutView") as! AboutViewController
         
         // add views to observer array
         viewArray.append(self.dynamicType.leaseTableViewController as! LeaseTableViewController)

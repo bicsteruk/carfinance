@@ -13,6 +13,8 @@
 		4205A7C81CB1902000B07689 /* LoanTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4205A7C71CB1902000B07689 /* LoanTableViewController.swift */; };
 		4205A7CA1CB1A11E00B07689 /* 1458441415_Auto_Loan.png in Resources */ = {isa = PBXBuildFile; fileRef = 4205A7C91CB1A11E00B07689 /* 1458441415_Auto_Loan.png */; };
 		4205A7CC1CB1CC7600B07689 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4205A7CB1CB1CC7600B07689 /* SettingsTableViewController.swift */; };
+		423A2B711CBA8F630081F435 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423A2B701CBA8F630081F435 /* AboutViewController.swift */; };
+		423A2B731CBA8F980081F435 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423A2B721CBA8F980081F435 /* HelpViewController.swift */; };
 		4268462E1CB6D75300D94DC9 /* ViewLoanTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4268462D1CB6D75300D94DC9 /* ViewLoanTableViewController.swift */; };
 		429EEFFB1CAC0AE500256D7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429EEFFA1CAC0AE500256D7D /* AppDelegate.swift */; };
 		429EEFFD1CAC0AE500256D7D /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429EEFFC1CAC0AE500256D7D /* MenuViewController.swift */; };
@@ -39,6 +41,8 @@
 		4205A7C71CB1902000B07689 /* LoanTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoanTableViewController.swift; sourceTree = "<group>"; };
 		4205A7C91CB1A11E00B07689 /* 1458441415_Auto_Loan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1458441415_Auto_Loan.png; sourceTree = "<group>"; };
 		4205A7CB1CB1CC7600B07689 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		423A2B701CBA8F630081F435 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		423A2B721CBA8F980081F435 /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		4268462D1CB6D75300D94DC9 /* ViewLoanTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewLoanTableViewController.swift; sourceTree = "<group>"; };
 		429EEFF71CAC0AE400256D7D /* Car Finance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Car Finance.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		429EEFFA1CAC0AE500256D7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +111,8 @@
 				42BCBD981CB33E22003F00AF /* QuoteController.swift */,
 				42BCBD9C1CB340A0003F00AF /* QuoteTableViewController.swift */,
 				429EEFFE1CAC0AE500256D7D /* Main.storyboard */,
+				423A2B721CBA8F980081F435 /* HelpViewController.swift */,
+				423A2B701CBA8F630081F435 /* AboutViewController.swift */,
 				4268462D1CB6D75300D94DC9 /* ViewLoanTableViewController.swift */,
 				42BCBD9E1CB458C0003F00AF /* ViewLeaseTableViewController.swift */,
 				4205A7CB1CB1CC7600B07689 /* SettingsTableViewController.swift */,
@@ -174,6 +180,7 @@
 				TargetAttributes = {
 					429EEFF61CAC0AE400256D7D = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = UMZ478S8A7;
 					};
 				};
 			};
@@ -271,6 +278,7 @@
 				429EEFFD1CAC0AE500256D7D /* MenuViewController.swift in Sources */,
 				429EF0331CACA1E500256D7D /* LeaseTableViewController.swift in Sources */,
 				4205A7C61CB1820B00B07689 /* Common.swift in Sources */,
+				423A2B711CBA8F630081F435 /* AboutViewController.swift in Sources */,
 				429EEFFB1CAC0AE500256D7D /* AppDelegate.swift in Sources */,
 				429EF00D1CAC0B2100256D7D /* BaseViewController.swift in Sources */,
 				4205A7C21CAF624400B07689 /* SettingsDetails.swift in Sources */,
@@ -280,6 +288,7 @@
 				42BCBD9D1CB340A0003F00AF /* QuoteTableViewController.swift in Sources */,
 				4268462E1CB6D75300D94DC9 /* ViewLoanTableViewController.swift in Sources */,
 				429EF0151CAC0EE000256D7D /* HomeViewController.swift in Sources */,
+				423A2B731CBA8F980081F435 /* HelpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,10 +402,14 @@
 			baseConfigurationReference = 94FC1042DD6E4BF93F0DE83F /* Pods-Car Finance.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Car Finance/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.chrisbeech.Car-Finance";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -405,10 +418,14 @@
 			baseConfigurationReference = DFDE32AFA44B0F35AEE4636D /* Pods-Car Finance.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Car Finance/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.chrisbeech.Car-Finance";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

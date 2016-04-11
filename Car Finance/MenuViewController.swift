@@ -31,8 +31,10 @@ class MenuViewController: BaseViewController, UITableViewDataSource, UITableView
         arrayMenuOptions.append(["title":"Home", "icon":"Home"] )
         arrayMenuOptions.append(["title":"Lease Calculator", "icon":"Lease"])
         arrayMenuOptions.append(["title":"Finance Calculator", "icon":"Loan"])
-                arrayMenuOptions.append(["title":"Saved Quotes", "icon":"Quote"])
-
+        arrayMenuOptions.append(["title":"Saved Quotes", "icon":"Quote"])
+        arrayMenuOptions.append(["title":"Settings", "icon":"SettingsMenu"])
+        arrayMenuOptions.append(["title":"Help", "icon":"Help"])
+        arrayMenuOptions.append(["title":"About", "icon":"About"])
         self.addSlideMenuButton()
         
         // remove settings from menu view
@@ -70,6 +72,15 @@ class MenuViewController: BaseViewController, UITableViewDataSource, UITableView
             break
             case 3:
                 self.navigationController?.pushViewController(NavigationViewController.quoteTableViewController, animated: true)
+            break
+            case 4:
+                self.navigationController?.pushViewController(NavigationViewController.settingsTableViewController, animated: true)
+            break
+            case 5:
+                self.navigationController?.pushViewController(NavigationViewController.helpViewController, animated: true)
+            break
+            case 6:
+                self.navigationController?.pushViewController(NavigationViewController.aboutViewController, animated: true)
             break
             default:
                 return

@@ -27,17 +27,17 @@ class SettingsTableViewController: BaseTableViewController, UITextFieldDelegate 
         title = "Settings"
         
         // remove navigation button items
-        self.navigationItem.leftBarButtonItems = []
-        self.navigationItem.rightBarButtonItems = []
+       // self.navigationItem.leftBarButtonItems = []
+       // self.navigationItem.rightBarButtonItems = []
         
         // add a cancel button
-        let cancelButton = UIButton(type: UIButtonType.System)
+     /*   let cancelButton = UIButton(type: UIButtonType.System)
         cancelButton.setImage(UIImage(named: "Cancel"), forState: UIControlState.Normal)
         cancelButton.frame = CGRectMake(0, 0, 30, 30)
         cancelButton.addTarget(self, action: #selector(BaseViewController.onLeftButtonPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         let cancelBarItem = UIBarButtonItem(customView: cancelButton)
         self.navigationItem.leftBarButtonItem = cancelBarItem;
-        
+      */
         taxRate.delegate = self
         taxRate.keyboardType = UIKeyboardType.DecimalPad
         monthTextField.delegate = self

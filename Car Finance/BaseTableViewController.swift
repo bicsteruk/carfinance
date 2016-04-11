@@ -12,6 +12,8 @@ class BaseTableViewController: UITableViewController {
 
     var textFields : [UITextField] = []
     var currencySymbol : String = ""
+    var quoteChanged : Bool = false
+    var inViewMode : Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,28 +23,37 @@ class BaseTableViewController: UITableViewController {
         self.currencySymbol = String(currentLocale.objectForKey(NSLocaleCurrencySymbol)!)
     }
     
-    @IBAction func savePressed(saveButton : UIButton){        
-        let ac = UIAlertController(title: "Please enter a name for the quote:", message: nil, preferredStyle: .Alert)
-        ac.addTextFieldWithConfigurationHandler(nil)
+    @IBAction func savePressed(saveButton : UIButton){
         
-        let submitAction = UIAlertAction(title: "Save", style: .Default) {(action: UIAlertAction!) in
-            let answer = ac.textFields![0]
-            if let name = answer.text{
-                self.saveQuote(name)
+        if(saveButton.titleLabel?.text == "Update"){
+            self.updateQuote()
+        }else{
+            // saving a new quote
+            let ac = UIAlertController(title: "Quote name?", message: nil, preferredStyle: .Alert)
+            ac.addTextFieldWithConfigurationHandler(nil)
+            
+            let submitAction = UIAlertAction(title: "Save", style: .Default) {(action: UIAlertAction!) in
+                let answer = ac.textFields![0]
+                if let name = answer.text{
+                    self.saveQuote(name)
+                }
             }
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Default) {(action: UIAlertAction!) in
+            }
+            
+            ac.addAction(submitAction)
+            ac.addAction(cancelAction)
+            ac.view.setNeedsLayout()
+            presentViewController(ac, animated: true, completion: nil)
         }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Default) {(action: UIAlertAction!) in
-            print("Cancel pressed")
-        }
-        
-        ac.addAction(submitAction)
-        ac.addAction(cancelAction)
-        ac.view.setNeedsLayout()
-        presentViewController(ac, animated: true, completion: nil)
     }
     
     func saveQuote(name : String){
+        
+    }
+    
+    func updateQuote(){
         
     }
 
@@ -73,17 +84,37 @@ class BaseTableViewController: UITableViewController {
         let customBarItem = UIBarButtonItem(customView: btnShowMenu)
         self.navigationItem.leftBarButtonItem = customBarItem;
         
-        let rightMenuButton = UIButton(type: UIButtonType.System)
-        rightMenuButton.setImage(UIImage(named: "Settings"), forState: UIControlState.Normal)
-        rightMenuButton.frame = CGRectMake(0, 0, 30, 30)
-        rightMenuButton.addTarget(self, action: #selector(BaseTableViewController.onRightButtonPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
-        let rightBarItem = UIBarButtonItem(customView: rightMenuButton)
-        self.navigationItem.rightBarButtonItem = rightBarItem;
-    }
+ }
     
     func onLeftButtonPressed(sender : UIButton){
+        
+        
         // retrieve reference to current top view controller
         let currentViewController : UIViewController = self.navigationController!.topViewController!
+        
+  /*     // pop the view if this is a view lease or loan
+        if currentViewController.isKindOfClass(LeaseTableViewController){
+            // check to see if this instance is in view mode
+            let leaseViewController =  currentViewController as! LeaseTableViewController
+            if leaseViewController.inViewMode{
+                // pop the view
+                self.navigationController?.popViewControllerAnimated(true)
+                return
+            }
+        }
+        
+        // pop the view if this is a view lease or loan
+        if currentViewController.isKindOfClass(LoanTableViewController){
+            // check to see if this instance is in view mode
+            let loanViewController =  currentViewController as! LoanTableViewController
+            if loanViewController.inViewMode{
+                // pop the view
+                self.navigationController?.popViewControllerAnimated(true)
+                return
+            }
+        }
+        
+        */
         
         // if the current view is the menu
         if(currentViewController.isKindOfClass(MenuViewController)){

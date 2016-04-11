@@ -21,30 +21,44 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v19-ti-t92">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgM-hj-oEN">
-                                        <rect key="frame" x="85" y="83" width="214" height="194"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <string key="text">Welcome!  This is where we write our welcome speil and tell the user how to use the app.
-
-Also explain how the app is for guidance only and shoudn't be used for anything other than back of the envelope type calculations.</string>
-                                        <color key="textColor" red="0.47450980390000003" green="0.47843137250000001" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="UpArrow" translatesAutoresizingMaskIntoConstraints="NO" id="bqi-8T-T4O">
-                                        <rect key="frame" x="15" y="88" width="50" height="50"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="UpArrow" translatesAutoresizingMaskIntoConstraints="NO" id="bqi-8T-T4O">
+                                        <rect key="frame" x="15" y="69" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="Qdw-7N-aVg"/>
+                                            <constraint firstAttribute="width" constant="50" id="lEH-WT-Pfh"/>
+                                        </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Calc" translatesAutoresizingMaskIntoConstraints="NO" id="xWZ-Bc-LVz">
-                                        <rect key="frame" x="72" y="432" width="240" height="128"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Calc" translatesAutoresizingMaskIntoConstraints="NO" id="xWZ-Bc-LVz">
+                                        <rect key="frame" x="235" y="483" width="75" height="75"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="75" id="00d-eN-892"/>
                                             <constraint firstAttribute="height" constant="75" id="oQf-Gb-bjy"/>
                                         </constraints>
                                     </imageView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgM-hj-oEN">
+                                        <rect key="frame" x="75" y="69" width="235" height="406"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <string key="text">Congratulations for downloading the premier tool for calculating car lease and finance payments!
+
+Car Finance Calc provides a unique window into the world of lease and finance calculations by giving power to you, the user. 
+
+The Lease and Finance calculators will allow you to plug in different pricing and payment amounts and adjust in real-time showing instantaneous results. 
+
+You can also save lease and finance quotes for later review. Saved lease and finance quotes can be accessed via the Quotes section.
+
+Tap the menu button in the top left corner to begin!
+</string>
+                                        <color key="textColor" red="0.47450980390000003" green="0.47843137250000001" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="lgM-hj-oEN" secondAttribute="trailing" constant="10" id="TLQ-z8-YdC"/>
+                                    <constraint firstItem="bqi-8T-T4O" firstAttribute="leading" secondItem="v19-ti-t92" secondAttribute="leading" constant="15" id="W7V-JP-XT7"/>
                                     <constraint firstAttribute="trailing" secondItem="xWZ-Bc-LVz" secondAttribute="trailing" constant="10" id="jP6-3M-q7f"/>
+                                    <constraint firstItem="lgM-hj-oEN" firstAttribute="leading" secondItem="bqi-8T-T4O" secondAttribute="trailing" constant="10" id="tGX-7H-H4T"/>
                                     <constraint firstAttribute="bottom" secondItem="xWZ-Bc-LVz" secondAttribute="bottom" constant="10" id="z9r-Q1-FnL"/>
                                 </constraints>
                             </view>
@@ -489,7 +503,7 @@ Also explain how the app is for guidance only and shoudn't be used for anything 
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Residual:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oK9-uU-WoM">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Buy Out (Residual):" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oK9-uU-WoM">
                                                     <rect key="frame" x="104" y="6" width="150" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="200" id="2gh-w0-tB8"/>
@@ -2652,6 +2666,80 @@ Also explain how the app is for guidance only and shoudn't be used for anything 
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="991" y="2212"/>
+        </scene>
+        <!--About View Controller-->
+        <scene sceneID="uFa-Ov-eOb">
+            <objects>
+                <viewController storyboardIdentifier="AboutView" id="0fK-xf-aUa" customClass="AboutViewController" customModule="Car_Finance" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3nV-6I-IJz"/>
+                        <viewControllerLayoutGuide type="bottom" id="N7c-AA-jLZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Wmp-5b-Ggd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qIG-Er-7Py">
+                                <rect key="frame" x="10" y="68" width="300" height="500"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">Thank you for downloading my app!
+
+I created this app after getting frustrated when shopping for a new car. Dealers were very good at providing me with a monthly fee, but I wanted to know more. Was this a good deal? Where was my money going? How did they come up with this figure?
+
+I wanted a tool that could show me how my payment was calculated and how it would change based upon the residual, money down, APR percentages or term length.
+
+Spreadsheets can perform the calculations, but they don't fit in your pocket and don't enable you to easily play with the numbers to get where you want to be.
+
+Creating Car Finance Calculator enabled me to learn about developing iOS apps as well as solving my car purchasing frustrations.
+
+I hope you find it useful and it helps you negotiate your next purchase (or sale!).
+
+Enjoy!
+</mutableString>
+                                <color key="textColor" red="0.47450980390000003" green="0.47843137250000001" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qIG-Er-7Py" firstAttribute="leading" secondItem="Wmp-5b-Ggd" secondAttribute="leadingMargin" constant="10" id="ICq-Gp-35x"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qIG-Er-7Py" secondAttribute="trailing" constant="10" id="Y0j-LR-lGg"/>
+                            <constraint firstItem="qIG-Er-7Py" firstAttribute="centerX" secondItem="Wmp-5b-Ggd" secondAttribute="centerX" id="YL2-la-c7s"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YVS-dK-2Aa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1689" y="952"/>
+        </scene>
+        <!--Help View Controller-->
+        <scene sceneID="A1C-6r-PIy">
+            <objects>
+                <viewController storyboardIdentifier="HelpView" id="sJ8-2v-xkp" customClass="HelpViewController" customModule="Car_Finance" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HLL-oO-WQz"/>
+                        <viewControllerLayoutGuide type="bottom" id="cIi-wp-UJ7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="733-0G-w9f">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Help!" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="X4n-TZ-Nh7">
+                                <rect key="frame" x="40" y="70" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dBL-jJ-T94" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1689" y="1583"/>
         </scene>
     </scenes>
     <resources>

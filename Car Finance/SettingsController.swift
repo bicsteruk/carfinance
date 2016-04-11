@@ -37,7 +37,6 @@ class SettingsController{
         let currentSettings = try! Realm(configuration: config).objects(SettingsDetails).first
         if let currentSettingsUW = currentSettings{
             // we have current settings
-            print("Current tax rate is \(currentSettingsUW.taxRate)%")
             return currentSettingsUW
         }else{
             // add these settings to be default

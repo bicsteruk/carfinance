@@ -11,7 +11,7 @@ import UIKit
 class QuoteTableViewController: BaseTableViewController {
 
     var quotes : [Quote] = []
-    var viewLeaseTableViewController : ViewLeaseTableViewController = ViewLeaseTableViewController()
+    var viewLeaseTableViewController : LeaseTableViewController = LeaseTableViewController()
     var viewLoanTableViewController : ViewLoanTableViewController = ViewLoanTableViewController()
     
     @IBOutlet var tblMenuOptions : UITableView!
@@ -20,8 +20,8 @@ class QuoteTableViewController: BaseTableViewController {
         super.viewDidLoad()
         title = "Saved Quotes"
         
-        // lean and loan controllers
-        viewLeaseTableViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ViewLeaseTableView") as! ViewLeaseTableViewController
+        // lease and loan controllers
+        viewLeaseTableViewController = self.storyboard?.instantiateViewControllerWithIdentifier("LeaseTableView") as! LeaseTableViewController // view instance of lease table controller
         viewLoanTableViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ViewLoanTableView") as! ViewLoanTableViewController
         
         

@@ -16,6 +16,10 @@ class Quote:Object{
     dynamic var name : String = ""
     dynamic var type : String = ""
     
+    override class func primaryKey() -> String? {
+        return "quoteID"
+    }
+    
     // common fields
     dynamic var negPrice : Double = 0.0
     dynamic var moneyDown : Int = 0

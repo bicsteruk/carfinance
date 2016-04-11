@@ -30,13 +30,14 @@ class BaseViewController: UIViewController {
         let customBarItem = UIBarButtonItem(customView: btnShowMenu)
         self.navigationItem.leftBarButtonItem = customBarItem;
         
-        let rightMenuButton = UIButton(type: UIButtonType.System)
+  /*      let rightMenuButton = UIButton(type: UIButtonType.System)
         rightMenuButton.setImage(UIImage(named: "Settings"), forState: UIControlState.Normal)
         rightMenuButton.frame = CGRectMake(0, 0, 30, 30)
         rightMenuButton.addTarget(self, action: #selector(BaseViewController.onRightButtonPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         let rightBarItem = UIBarButtonItem(customView: rightMenuButton)
         self.navigationItem.rightBarButtonItem = rightBarItem;
-    }
+ */
+ }
     
     func onLeftButtonPressed(sender : UIButton){
         // retrieve reference to current top view controller

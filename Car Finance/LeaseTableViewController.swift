@@ -64,6 +64,8 @@ class LeaseTableViewController: BaseTableViewController, UITextFieldDelegate, Se
     
     var didViewLoad : Bool = false
     
+    var quote : Quote = Quote()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Lease Calculator"
@@ -83,7 +85,7 @@ class LeaseTableViewController: BaseTableViewController, UITextFieldDelegate, Se
         settingsUpdate(SettingsController.readSettings())
         
         // set residual to be 0
-        residualLabel.text = "Residual: \(residualVal)%"
+        residualLabel.text = "Buy Out (Residual): \(residualVal)%"
         residualSlider.minimumValue = 0
         residualSlider.maximumValue = 100
         
@@ -104,7 +106,6 @@ class LeaseTableViewController: BaseTableViewController, UITextFieldDelegate, Se
         monthStepper.maximumValue = 90
         //monthStepper.value = 36.0
         
-        
         aprStepper.wraps = false
         aprStepper.autorepeat = true
         aprStepper.continuous = true
@@ -123,10 +124,19 @@ class LeaseTableViewController: BaseTableViewController, UITextFieldDelegate, Se
         self.addDoneButtonOnKeyboard()
     }
     
-    override func saveQuote(name : String){
+    override func updateQuote(){
+       
+        // update the quote
+        QuoteController.updateQuote(quote, newQuote : populateQuote())
+        
+        // pop the view controller
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func populateQuote() -> Quote{
         let quote = Quote()
         quote.type = Common.LEASE
-        quote.name = name
+        //quote.name = name
         
         quote.loanAmount = loanAmount
         quote.financeCost = financeCost
@@ -161,9 +171,112 @@ class LeaseTableViewController: BaseTableViewController, UITextFieldDelegate, Se
         quote.residualSliderMaximumValue = residualSlider.maximumValue
         quote.residualSliderValue = residualSlider.value
         
+        return quote
+    }
+    
+    override func saveQuote(name : String){
+        // create the quote object
+        let quote = populateQuote()
+        quote.name = name
+        
         // save the quote
         QuoteController.addQuote(quote)
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        // we only update the navigation buttons and show quote if this is a view instance
+        if(quote.name != ""){
+      /*      let button = UIBarButtonItem(title: "< Back", style: UIBarButtonItemStyle.Bordered, target: self, action: #selector(LeaseTableViewController.goBack))
+            self.navigationItem.leftBarButtonItem = button
+        */
+            let btnShowMenu = UIButton(type: UIButtonType.System)
+            btnShowMenu.setImage(UIImage(named: "Back"), forState: UIControlState.Normal)
+            btnShowMenu.frame = CGRectMake(0, 0, 30, 30)
+            btnShowMenu.addTarget(self, action: #selector(LeaseTableViewController.goBack), forControlEvents: UIControlEvents.TouchUpInside)
+            let customBarItem = UIBarButtonItem(customView: btnShowMenu)
+            self.navigationItem.leftBarButtonItem = customBarItem;
+
+            
+
+            showQuote()
+            quoteChanged = false
+            inViewMode = true
+        }
+        
+        super.viewWillAppear(animated)
+    }
+    
+    func goBack(){
+        
+        if quoteChanged == true{
+            let ac = UIAlertController(title: "Quote changes have not been saved!", message: nil, preferredStyle: .Alert)
+            //ac.addTextFieldWithConfigurationHandler(nil)
+            
+            let submitAction = UIAlertAction(title: "Ok", style: .Default) {(action: UIAlertAction!) in
+                self.navigationController?.popViewControllerAnimated(true)
+            }
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Default) {(action: UIAlertAction!) in
+                return
+            }
+            
+            ac.addAction(submitAction)
+            ac.addAction(cancelAction)
+            ac.view.setNeedsLayout()
+            presentViewController(ac, animated: true, completion: nil)
+        }else{
+            self.navigationController?.popViewControllerAnimated(true)
+        }
+
+    }
+
+    func showQuote(){
+        self.title = quote.name
+        
+        // map out from the quote object to the view
+        msrpField.text = String(format: "%.2f", quote.msrpValue)
+        agreedPriceField.text = String(format: "%.2f", quote.negPrice)
+        
+        downPaymentSlider.minimumValue = quote.downPaymentSliderMinimumValue
+        downPaymentSlider.maximumValue = quote.downPaymentSliderMaximumValue
+        downPaymentSlider.value = quote.downPaymentSliderValue
+        downPaymentLabel.text = "Down Payment: \(currencySymbol)\(quote.moneyDown)"
+        
+        residualSlider.minimumValue = quote.residualSliderMinimumValue
+        residualSlider.maximumValue = quote.residualSliderMaximumValue
+        residualSlider.value = quote.residualSliderValue
+        
+        msrpValue = quote.msrpValue
+        
+        let residualVal = Int(roundf(quote.residualSliderValue) * 1)
+        if msrpValue == 0.0{
+            residualLabel.text = "Buy Out (Residual): \(residualVal)%"
+        }else{
+            self.residualVal = (msrpValue/100) * Double(residualVal)
+            residualLabel.text = "Buy Out (Residual): \(residualVal)% (\(currencySymbol)\(Int(self.residualVal)))"
+        }
+        
+        // don't need to set steppers
+        aprTextField.text = String(format: "%.2f", quote.aprVal)
+        monthTextField.text = "\(quote.numberOfMonths)"
+        
+        // tax switch
+        taxSwitch.on = quote.incTax
+        
+        // results
+        weeklyLabel.text = currencySymbol + String(format: "%.2f", quote.weeklyCost)
+        biWeeklyLabel.text = currencySymbol + String(format: "%.2f", quote.biWeeklyCost)
+        monthlyLabel.text = currencySymbol + String(format: "%.2f", quote.monthlyCost)
+        
+        // other details
+        loanAmountLabel.text = currencySymbol + String(format: "%.2f", quote.loanAmount)
+        financeCostLabel.text = currencySymbol + String(format: "%.2f", quote.financeCost)
+        totalCostLabel.text = currencySymbol + String(format: "%.2f", quote.totalCost)
+        
+        saveButton.setTitle("Update", forState: UIControlState.Normal)
+    }
+
     
     func settingsUpdate(details : SettingsDetails){
         
@@ -233,6 +346,9 @@ class LeaseTableViewController: BaseTableViewController, UITextFieldDelegate, Se
     }
     
     override func calculate(){
+        
+        quoteChanged = true
+        
         // read values from the view
         updateHelperVars()
 
@@ -296,10 +412,10 @@ class LeaseTableViewController: BaseTableViewController, UITextFieldDelegate, Se
         let residualVal = Int(roundf(residualSlider.value) * 1)
         //self.residualSliderVal = residualVal
         if msrpValue == 0.0{
-            residualLabel.text = "Residual: \(residualVal)%"
+            residualLabel.text = "Buy Out (Residual): \(residualVal)%"
         }else{
             self.residualVal = (msrpValue/100) * Double(residualVal)
-            residualLabel.text = "Residual: \(residualVal)% (\(currencySymbol)\(Int(self.residualVal)))"
+            residualLabel.text = "Buy Out (Residual): \(residualVal)% (\(currencySymbol)\(Int(self.residualVal)))"
         }
         calculate()
     }
