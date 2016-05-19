@@ -55,6 +55,7 @@ class SettingsTableViewController: BaseTableViewController, UITextFieldDelegate 
         textFields.append(taxRate)
         textFields.append(aprTextField)
         textFields.append(monthTextField)
+        textFields.append(downPaymentMin)
         textFields.append(downPaymentMax)
         textFields.append(downPaymentDefault)
         
@@ -89,6 +90,34 @@ class SettingsTableViewController: BaseTableViewController, UITextFieldDelegate 
         // notify all views of a settings update
         let navigationController = self.navigationController as! NavigationViewController
         let settings = readSettings()
+        
+        // validate settings
+        if settings.downPaymentDefault < settings.downPaymentMin || settings.downPaymentDefault > settings.downPaymentMax{
+            let ac = UIAlertController(title: "Default Down Payment must be between Min and Max!", message: nil, preferredStyle: .Alert)
+            
+            let agreeAction = UIAlertAction(title: "Ok", style: .Default) {(action: UIAlertAction!) in
+                return
+            }
+            
+            ac.addAction(agreeAction)
+            ac.view.setNeedsLayout()
+            self.presentViewController(ac, animated: true, completion: nil)
+        }
+        
+        if settings.downPaymentMax < settings.downPaymentMin || settings.downPaymentMin > settings.downPaymentMax || settings.downPaymentMin == settings.downPaymentMax{
+            let ac = UIAlertController(title: "Down Payment Min must be less than Max!", message: nil, preferredStyle: .Alert)
+            
+            let agreeAction = UIAlertAction(title: "Ok", style: .Default) {(action: UIAlertAction!) in
+                return
+            }
+            
+            ac.addAction(agreeAction)
+            ac.view.setNeedsLayout()
+            self.presentViewController(ac, animated: true, completion: nil)
+        }
+        
+        
+        
         SettingsController.saveSettings(settings)
         navigationController.notifySettingsUpdate(settings)
         // close the settings window

@@ -181,23 +181,21 @@ class LeaseTableViewController: BaseTableViewController, UITextFieldDelegate, Se
         
         // save the quote
         QuoteController.addQuote(quote)
+        
+        // disable the save button
+        saveButton.enabled = false
     }
     
     override func viewWillAppear(animated: Bool) {
         
         // we only update the navigation buttons and show quote if this is a view instance
         if(quote.name != ""){
-      /*      let button = UIBarButtonItem(title: "< Back", style: UIBarButtonItemStyle.Bordered, target: self, action: #selector(LeaseTableViewController.goBack))
-            self.navigationItem.leftBarButtonItem = button
-        */
             let btnShowMenu = UIButton(type: UIButtonType.System)
             btnShowMenu.setImage(UIImage(named: "Back"), forState: UIControlState.Normal)
             btnShowMenu.frame = CGRectMake(0, 0, 30, 30)
             btnShowMenu.addTarget(self, action: #selector(LeaseTableViewController.goBack), forControlEvents: UIControlEvents.TouchUpInside)
             let customBarItem = UIBarButtonItem(customView: btnShowMenu)
             self.navigationItem.leftBarButtonItem = customBarItem;
-
-            
 
             showQuote()
             quoteChanged = false
@@ -207,29 +205,7 @@ class LeaseTableViewController: BaseTableViewController, UITextFieldDelegate, Se
         super.viewWillAppear(animated)
     }
     
-    func goBack(){
-        
-        if quoteChanged == true{
-            let ac = UIAlertController(title: "Quote changes have not been saved!", message: nil, preferredStyle: .Alert)
-            //ac.addTextFieldWithConfigurationHandler(nil)
-            
-            let submitAction = UIAlertAction(title: "Ok", style: .Default) {(action: UIAlertAction!) in
-                self.navigationController?.popViewControllerAnimated(true)
-            }
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: .Default) {(action: UIAlertAction!) in
-                return
-            }
-            
-            ac.addAction(submitAction)
-            ac.addAction(cancelAction)
-            ac.view.setNeedsLayout()
-            presentViewController(ac, animated: true, completion: nil)
-        }else{
-            self.navigationController?.popViewControllerAnimated(true)
-        }
 
-    }
 
     func showQuote(){
         self.title = quote.name
@@ -241,7 +217,7 @@ class LeaseTableViewController: BaseTableViewController, UITextFieldDelegate, Se
         downPaymentSlider.minimumValue = quote.downPaymentSliderMinimumValue
         downPaymentSlider.maximumValue = quote.downPaymentSliderMaximumValue
         downPaymentSlider.value = quote.downPaymentSliderValue
-        downPaymentLabel.text = "Down Payment: \(currencySymbol)\(quote.moneyDown)"
+        downPaymentLabel.text = "Money Down/Trade In: \(currencySymbol)\(quote.moneyDown)"
         
         residualSlider.minimumValue = quote.residualSliderMinimumValue
         residualSlider.maximumValue = quote.residualSliderMaximumValue
@@ -257,8 +233,14 @@ class LeaseTableViewController: BaseTableViewController, UITextFieldDelegate, Se
             residualLabel.text = "Buy Out (Residual): \(residualVal)% (\(currencySymbol)\(Int(self.residualVal)))"
         }
         
-        // don't need to set steppers
+        aprStepper.value = quote.aprStepperValue
+        aprStepper.minimumValue = quote.aprStepperMinimumValue
+        aprStepper.maximumValue = quote.aprStepperMaximumValue
         aprTextField.text = String(format: "%.2f", quote.aprVal)
+        
+        monthStepper.value = quote.monthStepperValue
+        monthStepper.minimumValue = quote.monthStepperMinimumValue
+        monthStepper.maximumValue = quote.monthStepperMaximumValue
         monthTextField.text = "\(quote.numberOfMonths)"
         
         // tax switch
@@ -303,7 +285,7 @@ class LeaseTableViewController: BaseTableViewController, UITextFieldDelegate, Se
         }
         
         // update label
-        downPaymentLabel.text = "Down Payment: \(currencySymbol)" + String(format: "%.2f", downPaymentSlider.value)
+        downPaymentLabel.text = "Money Down/Trade In: \(currencySymbol)" + String(format: "%.2f", downPaymentSlider.value)
     
         if aprDefault == 0.0{
             // update steppers and associated labels
@@ -349,8 +331,15 @@ class LeaseTableViewController: BaseTableViewController, UITextFieldDelegate, Se
         
         quoteChanged = true
         
+        saveButton.enabled = true
+        
         // read values from the view
         updateHelperVars()
+        
+        // ensure any keyboard is hidden
+        for textField in textFields{
+            textField.resignFirstResponder()
+        }
 
         // avoid a divide by zero
         if(numberOfMonths == 0){
@@ -423,7 +412,7 @@ class LeaseTableViewController: BaseTableViewController, UITextFieldDelegate, Se
     @IBAction func downPaymentSlide(slider : UISlider){
         let downPaymentValue = Int(round(slider.value / 100) * 100)
         moneyDown = Int(downPaymentValue)
-        downPaymentLabel.text = "Down Payment: \(currencySymbol)\(downPaymentValue)"
+        downPaymentLabel.text = "Money Down/Trade In: \(currencySymbol)\(downPaymentValue)"
         calculate()
     }
     

@@ -34,7 +34,6 @@ class MenuViewController: BaseViewController, UITableViewDataSource, UITableView
         arrayMenuOptions.append(["title":"Saved Quotes", "icon":"Quote"])
         arrayMenuOptions.append(["title":"Settings", "icon":"SettingsMenu"])
         arrayMenuOptions.append(["title":"Help", "icon":"Help"])
-        arrayMenuOptions.append(["title":"About", "icon":"About"])
         self.addSlideMenuButton()
         
         // remove settings from menu view
@@ -78,9 +77,6 @@ class MenuViewController: BaseViewController, UITableViewDataSource, UITableView
             break
             case 5:
                 self.navigationController?.pushViewController(NavigationViewController.helpViewController, animated: true)
-            break
-            case 6:
-                self.navigationController?.pushViewController(NavigationViewController.aboutViewController, animated: true)
             break
             default:
                 return

@@ -14,6 +14,7 @@ class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addSlideMenuButton()
+        title = "Home"
     }
 
     override func didReceiveMemoryWarning() {

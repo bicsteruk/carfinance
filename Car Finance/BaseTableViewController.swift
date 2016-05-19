@@ -70,6 +70,33 @@ class BaseTableViewController: UITableViewController {
         saveButton.layer.cornerRadius = 5
         saveButton.layer.borderWidth = 1
         saveButton.layer.borderColor = UIColor.blackColor().CGColor
+        
+        // disabled until calculate pressed
+        saveButton.enabled = false
+    }
+    
+    func goBack(){
+        
+        if quoteChanged == true{
+            let ac = UIAlertController(title: "Quote changes have not been saved!", message: nil, preferredStyle: .Alert)
+            //ac.addTextFieldWithConfigurationHandler(nil)
+            
+            let submitAction = UIAlertAction(title: "Ok", style: .Default) {(action: UIAlertAction!) in
+                self.navigationController?.popViewControllerAnimated(true)
+            }
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Default) {(action: UIAlertAction!) in
+                return
+            }
+            
+            ac.addAction(submitAction)
+            ac.addAction(cancelAction)
+            ac.view.setNeedsLayout()
+            presentViewController(ac, animated: true, completion: nil)
+        }else{
+            self.navigationController?.popViewControllerAnimated(true)
+        }
+        
     }
     
     func calculate(){
@@ -92,30 +119,6 @@ class BaseTableViewController: UITableViewController {
         // retrieve reference to current top view controller
         let currentViewController : UIViewController = self.navigationController!.topViewController!
         
-  /*     // pop the view if this is a view lease or loan
-        if currentViewController.isKindOfClass(LeaseTableViewController){
-            // check to see if this instance is in view mode
-            let leaseViewController =  currentViewController as! LeaseTableViewController
-            if leaseViewController.inViewMode{
-                // pop the view
-                self.navigationController?.popViewControllerAnimated(true)
-                return
-            }
-        }
-        
-        // pop the view if this is a view lease or loan
-        if currentViewController.isKindOfClass(LoanTableViewController){
-            // check to see if this instance is in view mode
-            let loanViewController =  currentViewController as! LoanTableViewController
-            if loanViewController.inViewMode{
-                // pop the view
-                self.navigationController?.popViewControllerAnimated(true)
-                return
-            }
-        }
-        
-        */
-        
         // if the current view is the menu
         if(currentViewController.isKindOfClass(MenuViewController)){
             // dismiss the menu and replace with the previous top view controller
@@ -136,6 +139,11 @@ class BaseTableViewController: UITableViewController {
     // function to ensure only monetary values are entered into text fields
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         
+        if string.characters.count == 0 && range.length > 0 {
+            // enable deletion
+            return true
+        }
+        
         switch string {
         case "0","1","2","3","4","5","6","7","8","9":
             if let textFieldString = textField.text{
@@ -153,7 +161,7 @@ class BaseTableViewController: UITableViewController {
         case ".":
             return !(textField.text?.containsString("."))!
         default:
-            return true
+            return false
         }
     }
     

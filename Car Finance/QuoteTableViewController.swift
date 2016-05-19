@@ -12,7 +12,7 @@ class QuoteTableViewController: BaseTableViewController {
 
     var quotes : [Quote] = []
     var viewLeaseTableViewController : LeaseTableViewController = LeaseTableViewController()
-    var viewLoanTableViewController : ViewLoanTableViewController = ViewLoanTableViewController()
+    var viewLoanTableViewController : LoanTableViewController = LoanTableViewController()
     
     @IBOutlet var tblMenuOptions : UITableView!
     
@@ -22,8 +22,7 @@ class QuoteTableViewController: BaseTableViewController {
         
         // lease and loan controllers
         viewLeaseTableViewController = self.storyboard?.instantiateViewControllerWithIdentifier("LeaseTableView") as! LeaseTableViewController // view instance of lease table controller
-        viewLoanTableViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ViewLoanTableView") as! ViewLoanTableViewController
-        
+        viewLoanTableViewController = self.storyboard?.instantiateViewControllerWithIdentifier("LoanTableView") as! LoanTableViewController // view instance of loan table controller
         
         // add buttons to navigation bar
         self.addSlideMenuButton()

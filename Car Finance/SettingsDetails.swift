@@ -12,9 +12,9 @@ import RealmSwift
 class SettingsDetails : Object{
     
     dynamic var downPaymentMin : Int = 0
-    dynamic var downPaymentMax : Int = 25000
+    dynamic var downPaymentMax : Int = 10000
     dynamic var downPaymentDefault : Int = 0
     dynamic var aprDefault : Double = 1.0
     dynamic var monthsDefault : Int = 36
-    dynamic var taxRate : Double = 13.1
+    dynamic var taxRate : Double = 13
 }

@@ -47,6 +47,7 @@ class SettingsController{
     }
     
     static func saveSettings(newSettings : SettingsDetails){
+        
         let currentSettings = try! Realm(configuration: config).objects(SettingsDetails).first
         if let currentSettingsUW = currentSettings{
             // we have current settings so modify

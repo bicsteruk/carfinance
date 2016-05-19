@@ -55,6 +55,8 @@ class LoanTableViewController: BaseTableViewController, UITextFieldDelegate, Set
     
     var didViewLoad : Bool = false
 
+    var quote : Quote = Quote()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Finance Calculator"
@@ -79,10 +81,92 @@ class LoanTableViewController: BaseTableViewController, UITextFieldDelegate, Set
         settingsUpdate(SettingsController.readSettings())
     }
     
+    override func viewWillAppear(animated: Bool) {
+        
+        // we only update the navigation buttons and show quote if this is a view instance
+        if(quote.name != ""){
+            let btnShowMenu = UIButton(type: UIButtonType.System)
+            btnShowMenu.setImage(UIImage(named: "Back"), forState: UIControlState.Normal)
+            btnShowMenu.frame = CGRectMake(0, 0, 30, 30)
+            btnShowMenu.addTarget(self, action: #selector(LoanTableViewController.goBack), forControlEvents: UIControlEvents.TouchUpInside)
+            let customBarItem = UIBarButtonItem(customView: btnShowMenu)
+            self.navigationItem.leftBarButtonItem = customBarItem;
+            
+            showQuote()
+            quoteChanged = false
+            inViewMode = true
+        }
+        
+        super.viewWillAppear(animated)
+    }
+    
     override func calculate(){
         updateHelperVars()
         
-        print("Calculations go here!")
+        quoteChanged = true
+        
+        saveButton.enabled = true
+        
+        // ensure any keyboard is hidden
+        for textField in textFields{
+            textField.resignFirstResponder()
+        }
+        
+        if(numberOfMonths == 0){
+            numberOfMonths = 1
+        }
+        
+        let numberOfWeeks = Int(round(Double(numberOfMonths) * 4.333333))
+        
+        if(aprVal == 0){
+            
+            // a zero apr makes things very easy!
+            var priceToPay = negPrice
+            if(taxSwitch.on){
+                priceToPay = priceToPay * 1.13
+            }
+            
+            priceToPay -= Double(moneyDown)
+            
+            monthlyCost = priceToPay/Double(numberOfMonths)
+            weeklyCost = priceToPay/Double(numberOfWeeks)
+            biWeeklyCost = priceToPay/Double(numberOfWeeks/2)
+            
+            totalCost = priceToPay+Double(moneyDown)
+
+            updateCalculatedFields()
+            
+            return
+        }
+        
+        //calculate apr factor
+        let moneyFactor = (aprVal / 100)/12
+        let jVal = pow((1+moneyFactor), Double(-numberOfMonths))
+        
+        loanAmount = negPrice - Double(moneyDown)
+        
+        var priceToPay = negPrice
+        
+        if(taxSwitch.on){
+            priceToPay = priceToPay * 1.13
+        }
+        
+        priceToPay -= Double(moneyDown)
+
+        // calculate monthly cost
+        monthlyCost = (priceToPay * (moneyFactor / (1-jVal)))
+        
+        // calculate loan amount
+        loanAmount = negPrice - Double(moneyDown)
+        
+        // calculate total cost
+        totalCost = (monthlyCost * Double(numberOfMonths)) + Double(moneyDown)
+        financeCost = (monthlyCost * Double(numberOfMonths)) - loanAmount
+        
+        
+        let totalMonthlies = monthlyCost * Double(numberOfMonths)
+        weeklyCost = totalMonthlies / Double(numberOfWeeks)
+        biWeeklyCost = totalMonthlies / Double(numberOfWeeks/2)
         
         updateCalculatedFields()
     }
@@ -113,11 +197,19 @@ class LoanTableViewController: BaseTableViewController, UITextFieldDelegate, Set
         monthlyLabel.text = currencySymbol + String(format: "%.2f", monthlyCost)
     }
     
-    override func saveQuote(name : String){
+    override func updateQuote(){
+        
+        // update the quote
+        QuoteController.updateQuote(quote, newQuote : populateQuote())
+        
+        // pop the view controller
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+
+    func populateQuote() -> Quote{
         let quote = Quote()
         quote.type = Common.LOAN
-        quote.name = name
-        
+
         quote.loanAmount = loanAmount
         quote.financeCost = financeCost
         quote.totalCost = totalCost
@@ -142,16 +234,66 @@ class LoanTableViewController: BaseTableViewController, UITextFieldDelegate, Set
         quote.aprStepperMinimumValue = aprStepper.minimumValue
         quote.aprStepperMaximumValue = aprStepper.maximumValue
         quote.aprStepperValue = aprStepper.value
+
+        return quote
+    }
+
+    
+    override func saveQuote(name : String){
+        
+        // retrieve quote
+        let quote = populateQuote()
+        quote.name = name
         
         // save the quote
         QuoteController.addQuote(quote)
+        
+        saveButton.enabled = false
+    }
+    
+    func showQuote(){
+        self.title = quote.name
+        
+        // map out from the quote object to the view
+        //msrpField.text = String(format: "%.2f", quote.msrpValue)
+        agreedPriceField.text = String(format: "%.2f", quote.negPrice)
+        
+        downPaymentSlider.minimumValue = quote.downPaymentSliderMinimumValue
+        downPaymentSlider.maximumValue = quote.downPaymentSliderMaximumValue
+        downPaymentSlider.value = quote.downPaymentSliderValue
+        downPaymentLabel.text = "Money Down/Trade In: \(currencySymbol)\(quote.moneyDown)"
+        
+        aprStepper.value = quote.aprStepperValue
+        aprStepper.minimumValue = quote.aprStepperMinimumValue
+        aprStepper.maximumValue = quote.aprStepperMaximumValue
+        aprTextField.text = String(format: "%.2f", quote.aprVal)
+        
+        monthStepper.value = quote.monthStepperValue
+        monthStepper.minimumValue = quote.monthStepperMinimumValue
+        monthStepper.maximumValue = quote.monthStepperMaximumValue
+        monthTextField.text = "\(quote.numberOfMonths)"
+        
+        // tax switch
+        taxSwitch.on = quote.incTax
+        
+        // results
+        weeklyLabel.text = currencySymbol + String(format: "%.2f", quote.weeklyCost)
+        biWeeklyLabel.text = currencySymbol + String(format: "%.2f", quote.biWeeklyCost)
+        monthlyLabel.text = currencySymbol + String(format: "%.2f", quote.monthlyCost)
+        
+        // other details
+        loanAmountLabel.text = currencySymbol + String(format: "%.2f", quote.loanAmount)
+        financeCostLabel.text = currencySymbol + String(format: "%.2f", quote.financeCost)
+        totalCostLabel.text = currencySymbol + String(format: "%.2f", quote.totalCost)
+        
+        saveButton.setTitle("Update", forState: UIControlState.Normal)
     }
 
     
     @IBAction func downPaymentSlide(slider : UISlider){
         let downPaymentValue = Int(round(slider.value / 100) * 100)
         moneyDown = Int(downPaymentValue)
-        downPaymentLabel.text = "Down Payment: \(currencySymbol)\(downPaymentValue)"
+        downPaymentLabel.text = "Money Down/Trade In: \(currencySymbol)\(downPaymentValue)"
         calculate()
     }
     
@@ -213,7 +355,7 @@ class LoanTableViewController: BaseTableViewController, UITextFieldDelegate, Set
         }
         
         // update label
-        downPaymentLabel.text = "Down Payment: \(currencySymbol)" + String(format: "%.2f", downPaymentSlider.value)
+        downPaymentLabel.text = "Money Down/Trade In: \(currencySymbol)" + String(format: "%.2f", downPaymentSlider.value)
         
         if aprDefault == 0.0{
             // update steppers and associated labels
@@ -253,8 +395,6 @@ class LoanTableViewController: BaseTableViewController, UITextFieldDelegate, Set
         
         calculate()
     }
-    
-    // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 4
