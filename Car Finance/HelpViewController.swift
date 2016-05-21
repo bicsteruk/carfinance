@@ -16,14 +16,6 @@ class HelpViewController: BaseViewController {
         super.viewDidLoad()
         self.addSlideMenuButton()
         title = "Help"
-
-        // configure text view
-        helpTextView.selectable = true
-        helpTextView.editable = false
-        helpTextView.dataDetectorTypes = UIDataDetectorTypes.Link
-        
-        helpTextView.backgroundColor = UIColor.blackColor()
-
     }
 
     override func didReceiveMemoryWarning() {

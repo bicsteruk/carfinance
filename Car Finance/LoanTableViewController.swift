@@ -257,20 +257,24 @@ class LoanTableViewController: BaseTableViewController, UITextFieldDelegate, Set
         // map out from the quote object to the view
         //msrpField.text = String(format: "%.2f", quote.msrpValue)
         agreedPriceField.text = String(format: "%.2f", quote.negPrice)
+        negPrice = quote.negPrice
         
         downPaymentSlider.minimumValue = quote.downPaymentSliderMinimumValue
         downPaymentSlider.maximumValue = quote.downPaymentSliderMaximumValue
         downPaymentSlider.value = quote.downPaymentSliderValue
+        moneyDown = quote.moneyDown
         downPaymentLabel.text = "Money Down/Trade In: \(currencySymbol)\(quote.moneyDown)"
         
         aprStepper.value = quote.aprStepperValue
         aprStepper.minimumValue = quote.aprStepperMinimumValue
         aprStepper.maximumValue = quote.aprStepperMaximumValue
+        aprVal = quote.aprVal
         aprTextField.text = String(format: "%.2f", quote.aprVal)
         
         monthStepper.value = quote.monthStepperValue
         monthStepper.minimumValue = quote.monthStepperMinimumValue
         monthStepper.maximumValue = quote.monthStepperMaximumValue
+        numberOfMonths = quote.numberOfMonths
         monthTextField.text = "\(quote.numberOfMonths)"
         
         // tax switch

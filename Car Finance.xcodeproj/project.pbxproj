@@ -11,7 +11,6 @@
 		4205A7C21CAF624400B07689 /* SettingsDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4205A7C11CAF624400B07689 /* SettingsDetails.swift */; };
 		4205A7C61CB1820B00B07689 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4205A7C51CB1820B00B07689 /* Common.swift */; };
 		4205A7C81CB1902000B07689 /* LoanTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4205A7C71CB1902000B07689 /* LoanTableViewController.swift */; };
-		4205A7CA1CB1A11E00B07689 /* 1458441415_Auto_Loan.png in Resources */ = {isa = PBXBuildFile; fileRef = 4205A7C91CB1A11E00B07689 /* 1458441415_Auto_Loan.png */; };
 		4205A7CC1CB1CC7600B07689 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4205A7CB1CB1CC7600B07689 /* SettingsTableViewController.swift */; };
 		423A2B731CBA8F980081F435 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423A2B721CBA8F980081F435 /* HelpViewController.swift */; };
 		429EEFFB1CAC0AE500256D7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429EEFFA1CAC0AE500256D7D /* AppDelegate.swift */; };
@@ -36,7 +35,6 @@
 		4205A7C11CAF624400B07689 /* SettingsDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDetails.swift; sourceTree = "<group>"; };
 		4205A7C51CB1820B00B07689 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		4205A7C71CB1902000B07689 /* LoanTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoanTableViewController.swift; sourceTree = "<group>"; };
-		4205A7C91CB1A11E00B07689 /* 1458441415_Auto_Loan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1458441415_Auto_Loan.png; sourceTree = "<group>"; };
 		4205A7CB1CB1CC7600B07689 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		423A2B721CBA8F980081F435 /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		429EEFF71CAC0AE400256D7D /* Car Finance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Car Finance.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,7 +91,6 @@
 		429EEFF91CAC0AE500256D7D /* Car Finance */ = {
 			isa = PBXGroup;
 			children = (
-				4205A7C91CB1A11E00B07689 /* 1458441415_Auto_Loan.png */,
 				429EEFFA1CAC0AE500256D7D /* AppDelegate.swift */,
 				4205A7C51CB1820B00B07689 /* Common.swift */,
 				429EF00C1CAC0B2100256D7D /* BaseViewController.swift */,
@@ -199,7 +196,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				429EF0051CAC0AE500256D7D /* LaunchScreen.storyboard in Resources */,
-				4205A7CA1CB1A11E00B07689 /* 1458441415_Auto_Loan.png in Resources */,
 				429EF0021CAC0AE500256D7D /* Assets.xcassets in Resources */,
 				429EF0001CAC0AE500256D7D /* Main.storyboard in Resources */,
 			);

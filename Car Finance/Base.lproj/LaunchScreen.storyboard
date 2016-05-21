@@ -36,7 +36,7 @@ v1.0</string>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="1458441415_Auto_Loan.png" translatesAutoresizingMaskIntoConstraints="NO" id="jWS-nh-0rA">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="jWS-nh-0rA">
                                 <rect key="frame" x="40" y="199" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -61,6 +61,6 @@ v1.0</string>
         </scene>
     </scenes>
     <resources>
-        <image name="1458441415_Auto_Loan.png" width="512" height="512"/>
+        <image name="Logo" width="171" height="171"/>
     </resources>
 </document>

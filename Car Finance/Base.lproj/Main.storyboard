@@ -38,16 +38,16 @@
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgM-hj-oEN">
                                         <rect key="frame" x="75" y="69" width="235" height="406"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <string key="text">Congratulations for downloading the premier tool for calculating car lease and finance payments!
+                                        <mutableString key="text">Congratulations for downloading the premier tool for calculating car lease and finance payments!
 
-Car Finance Calc provides a unique window into the world of lease and finance calculations by giving power to you, the user. 
+Car Finance Calculator provides a unique window into the world of lease and finance calculations by giving power to you, the user. 
 
-The Lease and Finance calculators will allow you to plug in different pricing and payment amounts and adjust in real-time showing instantaneous results. 
+The Lease and Finance calculators allow you to plug in different pricing and payment amounts and adjust in real-time showing instantaneous results. 
 
-You can also save lease and finance quotes for later review. Saved lease and finance quotes can be accessed via the Quotes section.
+You can also save Lease and Finance quotes for later review. Saved Lease and Finance quotes can be accessed via the Saved Quotes option.
 
 Tap the menu button in the top left corner to begin!
-</string>
+</mutableString>
                                         <color key="textColor" red="0.47450980390000003" green="0.47843137250000001" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -825,11 +825,11 @@ Tap the menu button in the top left corner to begin!
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Finance Cost:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cqb-I7-3sD">
-                                                    <rect key="frame" x="58" y="5" width="100" height="30"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Cost of Borrowing:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cqb-I7-3sD">
+                                                    <rect key="frame" x="42" y="5" width="116" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="3cA-93-dah"/>
-                                                        <constraint firstAttribute="width" constant="100" id="Tkh-9H-u6g"/>
+                                                        <constraint firstAttribute="width" constant="120" id="Tkh-9H-u6g"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
                                                     <color key="textColor" red="0.47450980390000003" green="0.47843137250000001" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -847,7 +847,7 @@ Tap the menu button in the top left corner to begin!
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="cqb-I7-3sD" firstAttribute="leading" secondItem="Lnt-2W-Kin" secondAttribute="leadingMargin" constant="50" id="2Qw-ms-YkQ"/>
+                                                <constraint firstItem="cqb-I7-3sD" firstAttribute="leading" secondItem="Lnt-2W-Kin" secondAttribute="leadingMargin" constant="30" id="2Qw-ms-YkQ"/>
                                                 <constraint firstItem="cqb-I7-3sD" firstAttribute="centerY" secondItem="Lnt-2W-Kin" secondAttribute="centerY" id="Jjj-6u-KB1"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="3MI-rs-6p5" secondAttribute="trailing" constant="50" id="L1c-cl-cXb"/>
                                                 <constraint firstItem="3MI-rs-6p5" firstAttribute="centerY" secondItem="Lnt-2W-Kin" secondAttribute="centerY" id="duT-UQ-kzI"/>
@@ -1437,10 +1437,10 @@ Tap the menu button in the top left corner to begin!
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Finance Cost:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SH9-nW-bMF">
-                                                    <rect key="frame" x="58" y="7" width="100" height="30"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Cost of Borrowing:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SH9-nW-bMF">
+                                                    <rect key="frame" x="42" y="7" width="120" height="30"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="100" id="mfz-dB-tfM"/>
+                                                        <constraint firstAttribute="width" constant="120" id="mfz-dB-tfM"/>
                                                         <constraint firstAttribute="height" constant="30" id="uOG-nK-ZRl"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
@@ -1459,7 +1459,7 @@ Tap the menu button in the top left corner to begin!
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="SH9-nW-bMF" firstAttribute="leading" secondItem="DQn-cH-G3C" secondAttribute="leadingMargin" constant="50" id="Jbk-Ip-Msn"/>
+                                                <constraint firstItem="SH9-nW-bMF" firstAttribute="leading" secondItem="DQn-cH-G3C" secondAttribute="leadingMargin" constant="30" id="Jbk-Ip-Msn"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="QSQ-ak-sIi" secondAttribute="trailing" constant="50" id="LgB-PU-F93"/>
                                                 <constraint firstItem="QSQ-ak-sIi" firstAttribute="centerY" secondItem="DQn-cH-G3C" secondAttribute="centerY" id="pUb-8w-Z2R"/>
                                                 <constraint firstItem="SH9-nW-bMF" firstAttribute="centerY" secondItem="DQn-cH-G3C" secondAttribute="centerY" id="zWd-RY-gvI"/>
@@ -1627,45 +1627,19 @@ Tap the menu button in the top left corner to begin!
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qIG-Er-7Py">
-                                <rect key="frame" x="0.0" y="68" width="320" height="1111"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qIG-Er-7Py">
+                                <rect key="frame" x="8" y="20" width="305" height="300"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">Car Finance Calculator is designed to be simple and easy to use. For any questions about Car Finance Calculator please contain info@car-finance-calc.com.
+                                <string key="text">Car Finance Calculator is designed to be simple and easy to use. 
 
-Lease Calculator
-Quotes for a Lease (also called PCP) can be calculated from the 'Lease Calculator' screen. Start by first entering the List Price (also called MRSP) and then the Agreed Price, which is the price negotiated by you. 
+Please see www.car-finance-calc.com for help and more information.
 
-The Money Down/Trade in slider can be used if you are putting money down or have a vehicle to trade in. Simple add up these values and set the slider to the total (the minimum and maximum values for the slider can be set in the Settings menu).
-
-The Residual (also known as the Buy Out) is the amount you would have to pay at the end of the term to keep the car. 
-
-The APR (Annual Percentage Rate) is basically the cost of the lease, this rate will be provided by the dealer or manufacturer. 
-
-The Months is the length of the lease in months.
-
-The tax rate is set in the Settings menu.
-
-Changing options such as Down Payment or APR will adjust the calculators in real time, so you will be able to see how the payment changes if you put more money down or extend the lease term.
-
-Lease quotes can be saved and retrieved from the Saved Quotes screen.
-
-Finance Calculator
-Quotes for vehicle finance (which is a loan to cover the cost of the vehicle) can be calculated from the ‘Finance Calculator' screen. Start by first entering the Agreed Price, which is the price negotiated by you. 
-
-The Money Down/Trade in slider can be used if you are putting money down or have a vehicle to trade in. Simple add up these values and set the slider to the total (the minimum and maximum values for the slider can be set in the Settings menu).
-
-The APR (Annual Percentage Rate) is basically the cost of the finance, this rate will be provided by the dealer or manufacturer. 
-
-The Months is the length of the loan in months.
-
-The tax rate is set in the Settings menu.
-
-Changing options such as Down Payment or APR will adjust the calculators in real time, so you will be able to see how the payment changes if you put more money down or extend the term.
-
-Finance quotes can be saved and retrieved from the Saved Quotes screen.</mutableString>
+For any questions about Car Finance Calculator please contact us at info@car-finance-calc.com.
+</string>
                                 <color key="textColor" red="0.47450980390000003" green="0.47843137250000001" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES" address="YES"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
